@@ -1,0 +1,40 @@
+---
+title: "Markdown Them"
+slug: "markdown-them"
+problem: "Documents usually arrive as Word files, PDFs, spreadsheets, or slides, while notes, repositories, and developer tooling work best with plain Markdown."
+value: "One converter engine that turns a dozen document formats into Markdown on your own machine, available as a browser app, desktop app, VS Code extension, and Node.js package."
+summary: "A local document-to-Markdown converter shared across a client-side web app, an Electron desktop app, a VS Code extension, and an npm package."
+status: "released"
+releaseState: "released"
+category: "local-first"
+role: "Creator"
+stack: ["TypeScript", "React", "Electron", "VS Code API", "Node.js"]
+repo: "https://github.com/the-long-ride/markdown-them"
+homepage: "https://the-long-ride.github.io/markdown-them/"
+featured: true
+featuredOrder: 5
+logo: "/projects/markdown-them/logo.png"
+deepDive: false
+---
+
+## Documents in, Markdown out
+
+Markdown Them converts `.docx`, `.doc`, `.pdf`, `.html`, `.xlsx`, `.xls`, `.xlm`, `.pptx`, `.odt`, `.odp`, `.ods`, and `.rtf` files into Markdown. Spreadsheets become Markdown tables, rich text keeps common headings, bullets, and styling, and slide or document images can be kept inline.
+
+## One engine, four places to use it
+
+- **Web app** for quick conversions in the browser with nothing to install.
+- **Desktop app** (Electron) for local files, whole folders, and pasted text, writing `.md` files next to the originals.
+- **VS Code extension** with an Explorer right-click “Convert to Markdown” and a side-by-side preview of the active file.
+- **Node.js package**, `@the-long-ride/markdown-them`, for scripts, CLIs, and automation.
+
+## Local by default
+
+The web app converts entirely client-side: documents are not uploaded and no conversion request leaves the browser. The desktop app, extension, and package all run on your own machine or in your own Node.js process.
+
+### Engineering choices
+
+- **Concurrent batch conversion**, configurable from 1 to 16 files at a time (6 by default).
+- **Readable output over completeness**: images from `.pptx`, `.odt`, and `.odp` are embedded as data URIs, while backgrounds, repeated logos, and small decorative icons are filtered out.
+- **Honest limits**: legacy `.doc`, `.xls`, and `.xlm` files rely on renaming emulation and may not always convert correctly.
+- **Permissively licensed dependencies** such as mammoth, pdf2md, turndown, and fast-xml-parser, chosen with commercial use in mind.

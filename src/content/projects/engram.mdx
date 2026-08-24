@@ -1,0 +1,52 @@
+---
+title: "Engram"
+slug: "engram"
+problem: "AI agents need durable context, but opaque vendor memory makes that context hard to inspect, review, move, or own."
+value: "A human-owned, file-first memory protocol that keeps agent knowledge in plain Markdown, under review, portable through Git, and usable across agents."
+summary: "Human-owned memory for AI agents, with evidence-backed provenance, approval gates, dependency-aware retrieval, and local-first storage."
+status: "released"
+releaseState: "released"
+category: "ai"
+role: "Creator"
+stack: ["TypeScript", "Node.js", "Markdown", "Git", "MCP"]
+repo: "https://github.com/the-long-ride/engram"
+homepage: "https://the-long-ride.github.io/engram/"
+docs: "https://the-long-ride.github.io/engram/docs/intro"
+featured: true
+featuredOrder: 1
+logo: "/projects/engram/logo.svg"
+deepDive: true
+---
+
+## Memory should stay yours
+
+Agent memory is useful only when you can understand what was remembered, why it was remembered, and how to change it. Engram keeps durable rules, workflows, and project knowledge as plain Markdown instead of hiding them inside a provider-owned store.
+
+The protocol is designed around human review. Direct saves use explicit approval, and agent-driven saves propose exact candidates before writing. That boundary makes memory a collaboration surface rather than an invisible side effect.
+
+## Evidence before authority
+
+Engram separates raw evidence from approved memory. Observations create an immutable evidence trace and an editable review wrapper. Approved memories can then point back to those traces through provenance metadata.
+
+```text
+observe source
+  → immutable evidence trace
+  → editable review wrapper
+  → human approval
+  → active memory with provenance
+```
+
+Raw evidence remains evidence; it does not silently become an instruction. That distinction matters when the same memory layer is reused across agents and teams.
+
+## Local, compact, portable
+
+Engram stores workspace memory under `.agents/.engram/`, can sync through Git, scans for PII and secrets before writing, and routes task-relevant memories plus prerequisites into a compact context pack. The default read path favors useful context over dumping the entire memory store into an agent prompt.
+
+### Engineering choices
+
+- **Plain files over opaque storage** for inspectability and portability.
+- **Approval gates over automatic mutation** for human ownership.
+- **Evidence traces over unsupported assertions** for provenance.
+- **Dependency graphs and compact routing** to keep context relevant instead of merely large.
+
+The trade-off is intentional: Engram asks for a little more structure than invisible memory systems in exchange for reviewability, portability, and control.

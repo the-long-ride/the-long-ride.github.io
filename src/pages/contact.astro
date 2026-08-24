@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionLabel from "../components/ui/SectionLabel.astro";
+import ExternalLink from "../components/ui/ExternalLink.astro";
+import { siteConfig } from "../config/site";
+---
+
+<BaseLayout
+  title="Contact — Thế Long"
+  description="Get in touch with Thế Long about software engineering, open source, or building useful tools."
+>
+  <div class="page-shell contact-page">
+    <SectionLabel index="05" label="Contact" />
+    <section class="contact-hero" aria-labelledby="contact-title">
+      <h1 id="contact-title">
+        Have something
+        <br />
+        <em>worth building?</em>
+      </h1>
+      <div class="contact-copy">
+        <p>
+          I am happy to talk about thoughtful software, developer tooling, AI systems, open source,
+          or a problem that needs a careful engineering approach.
+        </p>
+        <p>No contact form, no funnel. Email me directly, or find me on the profiles below.</p>
+        <div class="contact-links">
+          <a class="contact-email" href={`mailto:${siteConfig.email}`}>
+            <span class="eyebrow">Email</span>
+            <span class="contact-email-address">{siteConfig.email}</span>
+          </a>
+          <ul class="contact-socials" aria-label="Profiles">
+            {siteConfig.socials.map((social) => (
+              <li>
+                <ExternalLink href={social.href}>
+                  <img
+                    class="social-icon"
+                    src={`/assets/icons/${social.icon}.svg`}
+                    alt=""
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                  />
+                  {social.label}
+                </ExternalLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

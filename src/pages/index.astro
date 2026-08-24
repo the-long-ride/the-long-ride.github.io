@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import SelectedWork from "../components/home/SelectedWork.astro";
+import SelectedExperience from "../components/home/SelectedExperience.astro";
+import WritingPreview from "../components/home/WritingPreview.astro";
+import PersonalStatement from "../components/home/PersonalStatement.astro";
+import { getFeaturedProjects } from "../lib/content";
+import { loadPortfolioMetadata } from "../lib/github-metadata";
+const featured = getFeaturedProjects(await getCollection("projects"));
+const metadata = await loadPortfolioMetadata();
+const writing = (await getCollection("writing", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .map((entry) => ({ data: entry.data, slug: entry.data.slug }));
+---
+
+<BaseLayout>
+  <Hero />
+  <SelectedWork projects={featured} metadata={metadata} />
+  <SelectedExperience />
+  <WritingPreview entries={writing} />
+  <PersonalStatement />
+</BaseLayout>

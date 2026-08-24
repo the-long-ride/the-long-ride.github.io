@@ -1,0 +1,8 @@
+---
+import { getGoatCounterConfig } from "../../lib/analytics";
+const config = getGoatCounterConfig(import.meta.env.PUBLIC_GOATCOUNTER_CODE);
+---
+
+{config && (
+  <script is:inline async data-goatcounter={config.endpoint} src={config.scriptSrc}></script>
+)}

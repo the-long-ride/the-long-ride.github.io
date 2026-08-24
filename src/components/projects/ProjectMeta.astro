@@ -1,0 +1,33 @@
+---
+import type { RepositoryMetadata } from "../../lib/github-metadata";
+interface Props {
+  role: string;
+  stack: string[];
+  status: "released" | "in-development";
+  metadata?: RepositoryMetadata;
+}
+const { role, stack, status, metadata } = Astro.props;
+---
+
+<dl class="project-meta">
+  <div>
+    <dt>Role</dt>
+    <dd>{role}</dd>
+  </div>
+  <div>
+    <dt>Status</dt>
+    <dd>
+      {status === "released" ? (metadata?.latestRelease?.tag ?? "Released") : "In development"}
+    </dd>
+  </div>
+  <div>
+    <dt>Stack</dt>
+    <dd>{stack.join(" · ")}</dd>
+  </div>
+  {metadata?.primaryLanguage && (
+    <div>
+      <dt>Primary</dt>
+      <dd>{metadata.primaryLanguage}</dd>
+    </div>
+  )}
+</dl>

@@ -1,0 +1,47 @@
+{
+  "name": "the-long-ride-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:loc": "node scripts/lint-loc.mjs",
+    "lint": "npm run format:check && npm run lint:loc",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "metadata:refresh": "node scripts/refresh-github-metadata.mjs",
+    "content:validate": "node scripts/validate-content.mjs",
+    "resume:pdf": "node scripts/generate-resume-pdf.mjs",
+    "favicon:generate": "node scripts/generate-favicon.mjs",
+    "verify": "npm run lint && npm run test:run && npm run content:validate && npm run check && npm run build && npm run resume:pdf && playwright test"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "8.0.2",
+    "@astrojs/react": "7.0.0",
+    "@astrojs/rss": "4.0.19",
+    "@astrojs/sitemap": "3.7.4",
+    "@tailwindcss/vite": "4.3.3",
+    "astro": "7.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.0",
+    "typescript": "5.9.3",
+    "vitest": "5.0.2"
+  }
+}

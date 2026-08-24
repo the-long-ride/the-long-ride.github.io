@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionLabel from "../../components/ui/SectionLabel.astro";
+import ProjectCard from "../../components/projects/ProjectCard.astro";
+import ContributionList from "../../components/projects/ContributionList.astro";
+import SmallProjectList from "../../components/projects/SmallProjectList.astro";
+import { getReleasedProjects } from "../../lib/content";
+import { loadPortfolioMetadata } from "../../lib/github-metadata";
+const projects = getReleasedProjects(await getCollection("projects"));
+projects.sort((a, b) => (a.data.featuredOrder ?? 999) - (b.data.featuredOrder ?? 999));
+const metadata = await loadPortfolioMetadata();
+---
+
+<BaseLayout
+  title="Projects — Thế Long"
+  description="Released public software by Thế Long: AI tooling, developer tools, and product engineering."
+>
+  <div class="page-shell">
+    <section class="page-intro" aria-labelledby="projects-title">
+      <SectionLabel label="Released work" index="01" />
+      <h1 id="projects-title">
+        Useful software,
+        <br />
+        <em>built all the way through.</em>
+      </h1>
+      <p>
+        These are released public projects. Start with the problem; keep reading for architecture,
+        trade-offs, and implementation details.
+      </p>
+    </section>
+    <section class="project-list" aria-label="Released projects">
+      {projects.map((project, index) => (
+        <ProjectCard entry={project} metadata={metadata[project.data.slug]} index={index + 1} />
+      ))}
+    </section>
+    <SmallProjectList />
+    <ContributionList />
+  </div>
+</BaseLayout>

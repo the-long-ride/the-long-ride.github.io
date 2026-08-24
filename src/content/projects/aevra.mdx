@@ -1,0 +1,52 @@
+---
+title: "Aevra"
+slug: "aevra"
+problem: "AI assistants can reason about local work, but giving them direct machine access without a clear authority boundary creates unacceptable security and audit risk."
+value: "A local MCP execution gateway that lets AI clients work with files, commands, Git, browsers, desktop apps, and upstream MCP servers under explicit capability policies and human approvals."
+summary: "A provider-neutral MCP execution gateway with policy enforcement, approval gates, secure local execution, browser and desktop control, and tamper-evident auditing."
+status: "released"
+releaseState: "released"
+category: "ai"
+role: "Creator"
+stack: ["TypeScript", "Node.js", "React", "MCP", "Native accessibility APIs"]
+repo: "https://github.com/the-long-ride/aevra"
+featured: true
+featuredOrder: 2
+logo: "/projects/aevra/logo.png"
+deepDive: true
+---
+
+## Give agents tools, not unchecked authority
+
+Aevra is a local MCP execution gateway for AI assistants, platforms with MCP connectors, and coding agents. It exposes host capabilities—files, shell commands, Git, background processes, browser control, desktop automation, and upstream MCP servers—through one guarded interface.
+
+The central invariant is simple: **the Core decides authority; the Worker executes only the authority it receives.**
+
+## Split the control plane from execution
+
+The architecture separates the public MCP data plane, the administrative control plane, and the local execution worker. Requests are validated against capability profiles, path and command policies, risk rules, and human approvals before they reach the worker.
+
+```text
+AI clients
+   ↓
+MCP gateway / policy core
+   ├─ admin control plane
+   └─ local IPC
+        ↓
+   execution worker
+   ├─ filesystem + Git
+   ├─ commands + processes
+   ├─ browser control
+   ├─ desktop accessibility APIs
+   └─ upstream MCP proxies
+```
+
+## Security is part of the interface
+
+Aevra applies workspace isolation, data masking, capability profiles, step-up approvals, and audit logging. Browser actions refuse sensitive credential fields, while desktop automation can use platform accessibility providers instead of blindly synthesizing input.
+
+Upstream MCP servers are republished under collision-resistant namespaces, so aggregation does not flatten tool identity or make authority ambiguous.
+
+### Why this project matters
+
+The useful part of an AI agent is not merely that it can call more tools. It is that the boundary around those tools remains understandable while the system grows. Aevra treats security, approval, and auditability as product behavior rather than a wrapper added after execution works.

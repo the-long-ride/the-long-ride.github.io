@@ -1,0 +1,20 @@
+---
+import SectionLabel from "../ui/SectionLabel.astro";
+import ExternalLink from "../ui/ExternalLink.astro";
+import { smallProjects } from "../../data/small-projects";
+---
+
+<section class="small-section" aria-labelledby="small-title">
+  <SectionLabel label="Smaller tools" index="02" />
+  <h2 id="small-title">Small projects</h2>
+  <ul class="small-list">
+    {smallProjects.map((item, index) => (
+      <li class="small-item">
+        <span class="small-index">{String(index + 1).padStart(2, "0")}</span>
+        <h3>{item.name}</h3>
+        <p>{item.summary}</p>
+        <ExternalLink href={item.repo}>Repository</ExternalLink>
+      </li>
+    ))}
+  </ul>
+</section>

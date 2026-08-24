@@ -1,0 +1,23 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import SectionLabel from "../components/ui/SectionLabel.astro";
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+}
+const { title, description, eyebrow = "Field notes" } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Thế Long`} description={description}>
+  <article class="content-page container">
+    <header class="content-header">
+      <SectionLabel label={eyebrow} />
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </header>
+    <div class="prose-shell">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

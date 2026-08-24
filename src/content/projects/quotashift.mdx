@@ -1,0 +1,33 @@
+---
+title: "QuotaShift"
+slug: "quotashift"
+problem: "AI coding tools expose different quota windows, balances, profiles, and reset rules, forcing users to repeatedly inspect separate apps and account states."
+value: "A desktop dashboard, tray app, and overlay that monitors provider usage in one place and supports safe account switching where the provider workflow allows it."
+summary: "A Tauri desktop utility for monitoring AI coding-tool quotas, reset windows, balances, local profiles, and provider-specific account workflows."
+status: "released"
+releaseState: "released"
+category: "product"
+role: "Creator"
+stack: ["TypeScript", "React", "Tauri", "Rust", "OS credential stores"]
+repo: "https://github.com/the-long-ride/QuotaShift"
+featured: true
+featuredOrder: 4
+logo: "/projects/quotashift/logo.png"
+deepDive: false
+---
+
+## Put usage limits where you can see them
+
+QuotaShift brings quota limits, reset windows, balances, and account state for Google Antigravity, OpenAI Codex, and Claude Code into one desktop application. The same information can live in the dashboard, system tray, or a compact desktop overlay.
+
+Provider behavior stays explicit rather than pretending every service works the same way. Antigravity and Codex can support account switching; Claude Code is monitor-only and can track multiple local `CLAUDE_CONFIG_DIR` profiles without switching credentials.
+
+## Desktop utility, security-sensitive data
+
+Credentials are encrypted with AES-256-GCM and backed by native credential stores such as Windows Credential Manager, macOS Keychain, or Linux Secret Service. Sensitive values are kept out of unencrypted browser storage, and subprocess credentials are passed over standard input instead of command arguments.
+
+The product also supports encrypted backup import/export, account ordering, provider-specific polling, usage guardrails, and an optional overlay for quick status checks.
+
+### The design constraint
+
+QuotaShift is not a generic “rotate accounts” layer. Each provider gets a deliberately bounded workflow based on what can be monitored or changed safely. That makes the UX slightly less uniform, but the behavior is more honest about the underlying systems.

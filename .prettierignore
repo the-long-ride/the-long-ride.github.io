@@ -1,0 +1,11 @@
+dist/
+node_modules/
+.astro/
+test-results/
+playwright-report/
+package-lock.json
+src/data/github-snapshot.json
+public/assets/
+docs/
+*.md
+*.mdx

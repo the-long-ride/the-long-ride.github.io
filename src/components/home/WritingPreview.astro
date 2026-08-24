@@ -1,0 +1,33 @@
+---
+interface Props {
+  entries?: Array<{
+    data: { title: string; description: string; publishedAt: Date };
+    slug?: string;
+    id?: string;
+  }>;
+}
+const { entries = [] } = Astro.props;
+---
+
+{entries.length > 0 && (
+  <section
+    class="home-section container"
+    data-writing-preview
+    aria-labelledby="writing-preview-title"
+  >
+    <div class="section-heading-row">
+      <span class="eyebrow">03 / Writing</span>
+    </div>
+    <h2 id="writing-preview-title" class="section-display">
+      Notes from the work.
+    </h2>
+    <div class="writing-preview-list">
+      {entries.slice(0, 3).map((entry) => (
+        <a href={`/writing/${entry.slug ?? entry.id}/`}>
+          <strong>{entry.data.title}</strong>
+          <span>{entry.data.description}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

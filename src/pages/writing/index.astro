@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionLabel from "../../components/ui/SectionLabel.astro";
+import ArticleList from "../../components/writing/ArticleList.astro";
+const entries = (await getCollection("writing", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .map((entry) => ({ data: entry.data, slug: entry.data.slug }));
+---
+
+<BaseLayout
+  title="Writing — Thế Long"
+  description="Notes about software, AI tooling, developer tools, and the decisions behind building them."
+>
+  <div class="page-shell writing-page">
+    <section class="page-intro compact-intro" aria-labelledby="writing-title">
+      <SectionLabel index="03" label="Writing" />
+      <h1 id="writing-title">
+        Writing,
+        <br />
+        <em>when there is something to say.</em>
+      </h1>
+      <p>
+        Field notes on building software, working with AI systems, and the engineering decisions
+        that survive contact with real use.
+      </p>
+    </section>
+    <ArticleList entries={entries} />
+  </div>
+</BaseLayout>

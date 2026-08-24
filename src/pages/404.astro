@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Not found" description="This route does not exist on Thế Long's portfolio.">
+  <section class="not-found container" aria-labelledby="not-found-title">
+    <p class="eyebrow">404 / signal lost</p>
+    <h1 id="not-found-title">
+      Nothing lives
+      <br />
+      <em>at this coordinate.</em>
+    </h1>
+    <p>The route may have moved, or it may never have existed.</p>
+    <a class="magnetic-link not-found-link" href="/">
+      <span>Return home</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+</BaseLayout>

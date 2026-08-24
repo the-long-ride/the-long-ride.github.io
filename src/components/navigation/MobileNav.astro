@@ -1,0 +1,23 @@
+---
+import type { NavItem } from "../../config/site";
+interface Props {
+  nav: NavItem[];
+}
+const { nav } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+
+<details class="mobile-menu">
+  <summary aria-label="Open primary navigation">
+    <span>Menu</span>
+    <span class="menu-glyph" aria-hidden="true"></span>
+  </summary>
+  <nav aria-label="Mobile primary">
+    {nav.map((item, index) => (
+      <a href={item.href} aria-current={pathname === item.href ? "page" : undefined}>
+        <span class="nav-index">{String(index + 1).padStart(2, "0")}</span>
+        <span>{item.label}</span>
+      </a>
+    ))}
+  </nav>
+</details>

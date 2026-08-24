@@ -1,0 +1,42 @@
+---
+interface Entry {
+  data: { title: string; description: string; publishedAt: Date; tags: string[] };
+  slug: string;
+}
+interface Props {
+  entries: Entry[];
+}
+const { entries } = Astro.props;
+---
+
+{entries.length === 0 ? (
+  <div class="empty-state">
+    <span class="eyebrow">No published notes yet</span>
+    <p>
+      I would rather publish something useful than fill this space for the sake of having a blog.
+    </p>
+  </div>
+) : (
+  <ol class="article-list">
+    {entries.map((entry) => (
+      <li>
+        <a href={`/writing/${entry.slug}/`}>
+          <div>
+            <strong>{entry.data.title}</strong>
+            <p>{entry.data.description}</p>
+          </div>
+          <div class="article-meta">
+            <time datetime={entry.data.publishedAt.toISOString()}>
+              {entry.data.publishedAt.toLocaleDateString("en", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </time>
+            <span>{entry.data.tags.join(" · ")}</span>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ol>
+)}

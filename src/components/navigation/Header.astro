@@ -1,0 +1,30 @@
+---
+import { getNavigation } from "../../config/site";
+import { resumeData } from "../../data/resume";
+import { hasResume } from "../../lib/resume";
+import MobileNav from "./MobileNav.astro";
+const pathname = Astro.url.pathname;
+const nav = getNavigation(hasResume(resumeData));
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="the-long-ride — home">
+      <span class="brand-mark" aria-hidden="true">
+        TLR
+      </span>
+      <span class="brand-copy">
+        <strong>the-long-ride</strong>
+        <span>Software // Agentic developer</span>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      {nav.map((item) => (
+        <a href={item.href} aria-current={pathname === item.href ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <MobileNav nav={nav} />
+  </div>
+</header>

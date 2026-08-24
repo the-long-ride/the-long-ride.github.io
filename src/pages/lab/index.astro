@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionLabel from "../../components/ui/SectionLabel.astro";
+import ProjectCard from "../../components/projects/ProjectCard.astro";
+import { getLabEntries } from "../../lib/content";
+import { loadPortfolioMetadata } from "../../lib/github-metadata";
+const entries = getLabEntries(await getCollection("lab"));
+const metadata = await loadPortfolioMetadata();
+---
+
+<BaseLayout
+  title="Lab — Thế Long"
+  description="Public experiments and in-development software by Thế Long."
+>
+  <div class="page-shell">
+    <section class="page-intro" aria-labelledby="lab-title">
+      <SectionLabel label="Lab / experiments" index="02" />
+      <h1 id="lab-title">
+        Work that is still
+        <br />
+        <em>becoming itself.</em>
+      </h1>
+      <p>
+        Public prototypes and in-development systems live here until a release turns them into
+        finished portfolio work.
+      </p>
+    </section>
+    <section class="project-list" aria-label="In-development projects">
+      {entries.map((entry, index) => (
+        <ProjectCard
+          entry={entry}
+          metadata={metadata[entry.data.slug]}
+          index={index + 1}
+          collection="lab"
+        />
+      ))}
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,23 @@
+---
+title: "Voxveil"
+slug: "voxveil"
+problem: "Real-time vocal reduction across desktop audio is technically demanding when the system must stay local, cross-platform, low-latency, and safe around OS audio routing."
+value: "An in-development local-first audio application exploring a shared Rust DSP core, platform-specific audio interception, and a responsive Tauri/React control surface."
+summary: "An in-development local-first real-time vocal-reduction application with a Rust audio core and native platform audio boundaries."
+status: "in-development"
+releaseState: "unreleased"
+category: "local-first"
+role: "Creator"
+stack: ["Rust", "Tauri", "React", "DSP", "Native audio APIs"]
+repo: "https://github.com/the-long-ride/Voxveil"
+featured: false
+deepDive: false
+---
+
+## In development
+
+Voxveil is exploring real-time vocal reduction with a shared Rust audio core, native platform audio adapters, and a Tauri/React interface. The current implementation includes classic DSP center suppression, optional stem-agnostic AI interfaces, local-only state, and explicit routing rules.
+
+On Windows, the project is working through multiple interception strategies—including an endpoint-scoped audio processing object and controlled virtual-endpoint relay paths—while guarding against stale routes, feedback loops, and unsafe sink selection.
+
+This belongs in the Lab because the engineering surface is substantial and public, but there is no release yet. The portfolio will treat it as active work until a release establishes a completed public milestone.

@@ -1,0 +1,39 @@
+:root {
+  color-scheme: only light;
+
+  /* palette */
+  --paper: #e9e5dd;
+  --paper-2: #ded9cf;
+  --ink: #171716;
+  --ink-soft: #4d4b46;
+  --graphite: #242321;
+  --stone: #858178;
+  --text: var(--ink);
+  --text-muted: var(--ink-soft);
+  --text-faint: var(--stone);
+  --surface: var(--paper);
+  --surface-raised: var(--paper-2);
+  --line: rgba(23, 23, 22, 0.16);
+  --line-soft: rgba(23, 23, 22, 0.09);
+  --line-strong: rgba(23, 23, 22, 0.32);
+  --amber: #a96f28;
+  --amber-deep: #7b4b16;
+  --amber-wash: rgba(169, 111, 40, 0.12);
+  --shadow: rgba(23, 23, 22, 0.12);
+
+  /* type: Orbitron and JetBrains Mono load from Google Fonts in BaseLayout */
+  --font-display: "Orbitron", "JetBrains Mono", ui-monospace, monospace;
+  --font-body: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  /* The name keeps the original sans face; Orbitron has no Vietnamese diacritics. */
+  --font-name: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tracking-display: 0.01em;
+
+  /* layout */
+  --content: 78rem;
+  --measure: 44rem;
+
+  /* pointer motion: resting values; CursorFollower overrides them at runtime */
+  --cursor-nx: 0;
+  --cursor-ny: 0;
+}

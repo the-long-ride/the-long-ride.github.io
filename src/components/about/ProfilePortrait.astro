@@ -1,0 +1,22 @@
+---
+interface Props {
+  src?: string;
+  alt?: string;
+}
+const { src, alt = "Portrait of Thế Long" } = Astro.props;
+---
+
+{src && (
+  <figure class="profile-portrait">
+    <img
+      data-profile-portrait
+      src={src}
+      alt={alt}
+      width="460"
+      height="460"
+      loading="lazy"
+      decoding="async"
+      referrerpolicy="no-referrer"
+    />
+  </figure>
+)}

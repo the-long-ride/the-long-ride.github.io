@@ -1,0 +1,72 @@
+---
+import StatusBadge from "./StatusBadge.astro";
+import type { RepositoryMetadata } from "../../lib/github-metadata";
+interface Props {
+  entry: {
+    data: {
+      title: string;
+      slug: string;
+      problem: string;
+      value: string;
+      status: "released" | "in-development";
+      stack: string[];
+      category: string;
+      logo?: string;
+    };
+  };
+  metadata?: RepositoryMetadata;
+  index: number;
+  collection?: "projects" | "lab";
+}
+const { entry, metadata, index, collection = "projects" } = Astro.props;
+const { data } = entry;
+const href = collection === "lab" ? `/lab/${data.slug}/` : `/projects/${data.slug}/`;
+const marks: Record<string, string> = {
+  engram: "EN",
+  aevra: "AE",
+  "markdown-explorer": "MD",
+  quotashift: "QS",
+  voxveil: "VX",
+  "know-your-project": "KP",
+};
+---
+
+<article class="project-card" data-project={data.slug}>
+  <a class="project-card-main" href={href} aria-label={`Read ${data.title} case study`}>
+    <div class="project-visual" aria-hidden="true">
+      {data.logo ? (
+        <img
+          class="project-logo"
+          src={data.logo}
+          alt=""
+          width="256"
+          height="256"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <span class="project-mark">{marks[data.slug] ?? "//"}</span>
+      )}
+      <span class="project-coordinate">
+        {String(index).padStart(2, "0")} / {data.category}
+      </span>
+      <span class="project-pulse"></span>
+    </div>
+    <div class="project-card-copy">
+      <div class="project-card-topline">
+        <span class="eyebrow">{String(index).padStart(2, "0")} / Selected system</span>
+        <StatusBadge status={data.status} />
+      </div>
+      <h2>{data.title}</h2>
+      <p class="project-problem">{data.problem}</p>
+      <p class="project-value">{data.value}</p>
+      <div class="project-card-foot">
+        <span>{data.stack.slice(0, 3).join(" · ")}</span>
+        {metadata?.latestRelease?.tag && <span>{metadata.latestRelease.tag}</span>}
+        <span class="project-arrow" aria-hidden="true">
+          ↗
+        </span>
+      </div>
+    </div>
+  </a>
+</article>

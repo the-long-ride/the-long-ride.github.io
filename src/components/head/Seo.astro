@@ -1,0 +1,40 @@
+---
+import { canonicalUrl, pageTitle } from "../../lib/seo";
+import { siteConfig } from "../../config/site";
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  type?: "website" | "article";
+}
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  canonical = Astro.url.pathname,
+  image,
+  type = "website",
+} = Astro.props;
+const finalTitle = pageTitle(title);
+const finalCanonical = canonicalUrl(canonical);
+const finalImage = image ? canonicalUrl(image) : undefined;
+const structured = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  description: siteConfig.description,
+};
+---
+
+<title>{finalTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={finalCanonical} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={finalTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={finalCanonical} />
+<meta property="og:site_name" content={siteConfig.name} />
+{finalImage && <meta property="og:image" content={finalImage} />}
+<meta name="twitter:card" content={finalImage ? "summary_large_image" : "summary"} />
+<script type="application/ld+json" set:html={JSON.stringify(structured)}></script>

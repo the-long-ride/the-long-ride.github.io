@@ -1,0 +1,39 @@
+/*
+ * Terminal typography layer. Imported last so it can re-assign families
+ * without touching every section stylesheet.
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.desktop-nav a,
+.mobile-menu summary,
+.magnetic-link,
+.brand-mark,
+.project-mark {
+  font-family: var(--font-display);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+.name-type {
+  font-family: var(--font-name);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}

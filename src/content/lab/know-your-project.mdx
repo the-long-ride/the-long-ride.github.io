@@ -1,0 +1,23 @@
+---
+title: "Know Your Project"
+slug: "know-your-project"
+problem: "AI coding clients need project knowledge that reflects releases and work history without exposing proprietary source, raw internal paths, or unrestricted graph access."
+value: "An in-development self-hosted knowledge service that derives release-aware semantic facts from Azure DevOps and exposes only a restricted read-only MCP surface."
+summary: "An in-development release-aware project knowledge service with self-hosted extraction, temporal facts, private Graphiti/Neo4j infrastructure, and a narrow MCP boundary."
+status: "in-development"
+releaseState: "unreleased"
+category: "ai"
+role: "Creator"
+stack: ["Python", "MCP", "Graphiti", "Neo4j", "Azure DevOps"]
+repo: "https://github.com/the-long-ride/know-your-project"
+featured: false
+deepDive: false
+---
+
+## In development
+
+Know Your Project is a self-hosted, release-aware knowledge service for MCP clients. It synchronizes Azure DevOps code, work items, repository documents, and HTML mockups, derives semantic facts locally, and stores temporal knowledge behind a restricted read-only interface.
+
+The public MCP boundary intentionally exposes semantic project knowledge rather than raw source files, source snippets, graph queries, credentials, parser output, or internal paths. Release identity and temporal invalidation are application-owned so a query can ask what was true at a specific release rather than only what is true on the live branch.
+
+Graphiti and Neo4j remain private infrastructure, while semantic extraction and embeddings can run through self-hosted model services. This stays in the Lab until the project has a release.

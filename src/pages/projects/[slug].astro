@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectMeta from "../../components/projects/ProjectMeta.astro";
+import StatusBadge from "../../components/projects/StatusBadge.astro";
+import ExternalLink from "../../components/ui/ExternalLink.astro";
+import { getRepositoryMetadata } from "../../lib/github-metadata";
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({ params: { slug: project.data.slug }, props: { project } }));
+}
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+const { project } = Astro.props;
+const { Content } = await render(project);
+const metadata = await getRepositoryMetadata(project.data.slug);
+---
+
+<BaseLayout title={project.data.title} description={project.data.summary}>
+  <article class="case-study">
+    <header class="case-study-header">
+      <a class="back-link" href="/projects/">
+        ← Projects
+      </a>
+      <div class="case-study-status">
+        <StatusBadge status={project.data.status} />
+      </div>
+      <h1>{project.data.title}</h1>
+      <p class="case-study-problem">{project.data.problem}</p>
+      <p class="case-study-value">{project.data.value}</p>
+      <div class="case-study-links">
+        {project.data.homepage && (
+          <ExternalLink href={project.data.homepage}>Homepage</ExternalLink>
+        )}
+        <ExternalLink href={project.data.repo}>Source repository</ExternalLink>
+        {project.data.demo && <ExternalLink href={project.data.demo}>Live demo</ExternalLink>}
+        {project.data.docs && <ExternalLink href={project.data.docs}>Documentation</ExternalLink>}
+      </div>
+      <ProjectMeta
+        role={project.data.role}
+        stack={project.data.stack}
+        status={project.data.status}
+        metadata={metadata}
+      />
+    </header>
+    <div class="prose case-study-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

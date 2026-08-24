@@ -1,0 +1,91 @@
+---
+import type { ResumeData } from "../../data/resume";
+import ResumeSection from "./ResumeSection.astro";
+interface Props {
+  data: ResumeData;
+}
+const { data } = Astro.props;
+---
+
+<article class="resume-view" data-resume-view>
+  <header class="resume-header">
+    <div>
+      <p class="eyebrow">Résumé / curriculum vitae</p>
+      <h1>{data.identity.name}</h1>
+      <p class="resume-headline">{data.identity.headline}</p>
+    </div>
+    <div class="resume-links">
+      {data.identity.location && <span>{data.identity.location}</span>}
+      {data.links.map((link) => (
+        <a href={link.url}>{link.label}</a>
+      ))}
+    </div>
+  </header>
+  <ResumeSection title="Profile">
+    <p>{data.summary}</p>
+  </ResumeSection>
+  {data.experience.length > 0 && (
+    <ResumeSection title="Selected experience">
+      <div class="resume-stack">
+        {data.experience.map((item) => (
+          <article class="resume-item">
+            <header>
+              <div>
+                <h3>{item.title}</h3>
+                <p>
+                  {item.organization}
+                  {item.location ? ` · ${item.location}` : ""}
+                </p>
+              </div>
+              <span>
+                {item.start} — {item.end}
+              </span>
+            </header>
+            <ul>
+              {item.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </ResumeSection>
+  )}
+  {data.projects.length > 0 && (
+    <ResumeSection title="Selected projects">
+      <div class="resume-stack">
+        {data.projects.map((project) => (
+          <article class="resume-item">
+            <header>
+              <h3>{project.name}</h3>
+              {project.url && <a href={project.url}>View ↗</a>}
+            </header>
+            <p>{project.description}</p>
+          </article>
+        ))}
+      </div>
+    </ResumeSection>
+  )}
+  {data.skills.length > 0 && (
+    <ResumeSection title="Skills">
+      <p class="resume-skills">{data.skills.join(" · ")}</p>
+    </ResumeSection>
+  )}
+  {data.education.length > 0 && (
+    <ResumeSection title="Education">
+      <div class="resume-stack">
+        {data.education.map((item) => (
+          <article class="resume-item">
+            <header>
+              <div>
+                <h3>{item.credential}</h3>
+                <p>{item.institution}</p>
+              </div>
+              {item.period && <span>{item.period}</span>}
+            </header>
+          </article>
+        ))}
+      </div>
+    </ResumeSection>
+  )}
+</article>

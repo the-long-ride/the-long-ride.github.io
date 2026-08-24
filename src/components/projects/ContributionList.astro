@@ -1,0 +1,28 @@
+---
+import SectionLabel from "../ui/SectionLabel.astro";
+import ExternalLink from "../ui/ExternalLink.astro";
+import { contributions } from "../../data/contributions";
+---
+
+<section class="contrib-section" aria-labelledby="contrib-title">
+  <SectionLabel label="Open source" index="03" />
+  <h2 id="contrib-title">Contributing to</h2>
+  <ul class="contrib-list">
+    {contributions.map((item) => (
+      <li class="contrib-item">
+        <div class="contrib-head">
+          <h3>{item.name}</h3>
+          <span class="contrib-owner">{item.owner}</span>
+        </div>
+        <p>{item.summary}</p>
+        <div class="contrib-meta">
+          <span>Contributor · {item.language}</span>
+          <span class="contrib-links">
+            <ExternalLink href={item.repo}>Repository</ExternalLink>
+            {item.homepage && <ExternalLink href={item.homepage}>Homepage</ExternalLink>}
+          </span>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

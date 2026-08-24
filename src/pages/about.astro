@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionLabel from "../components/ui/SectionLabel.astro";
+import ProfilePortrait from "../components/about/ProfilePortrait.astro";
+import { siteConfig } from "../config/site";
+---
+
+<BaseLayout
+  title="About — Thế Long"
+  description="About Thế Long: software developer building developer tools, AI tooling, and local-first software."
+>
+  <div class="page-shell about-page">
+    <SectionLabel index="04" label="About" />
+    <section class="about-hero" aria-labelledby="about-title">
+      <h1 id="about-title">
+        Build it.
+        <br />
+        Use it.
+        <br />
+        <em>Improve it.</em>
+      </h1>
+      <div class="about-side">
+        <ProfilePortrait src={siteConfig.portrait} />
+        <div class="about-lead">
+          <p>
+            I build developer tools, AI tooling, and local-first software. I like simple code, clear
+            boundaries, and fewer dependencies.
+          </p>
+          <p>
+            I am interested in software that makes difficult systems easier to understand and
+            genuinely useful—not complexity for its own sake.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="about-grid" aria-label="Working principles">
+      <article>
+        <span class="eyebrow">01 / Thoughtful</span>
+        <h2>Understand the boundary.</h2>
+        <p>
+          The interesting part is often not the happy path. It is who owns the data, what has
+          authority, what happens offline, and how failure stays understandable.
+        </p>
+      </article>
+      <article>
+        <span class="eyebrow">02 / Useful</span>
+        <h2>Ship the thing people need.</h2>
+        <p>
+          I care about technical quality, but I care about it because it should make the product
+          safer, clearer, faster, or easier to live with.
+        </p>
+      </article>
+      <article>
+        <span class="eyebrow">03 / Open</span>
+        <h2>Contribute where it helps.</h2>
+        <p>
+          I contribute to open source when I can see the work helping me and other people in work or
+          everyday life.
+        </p>
+      </article>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import { resumeData } from "../../data/resume";
+import { hasResume } from "../../lib/resume";
+const resume = hasResume(resumeData) ? resumeData : null;
+---
+
+{resume && (
+  <section
+    class="home-section container"
+    data-selected-experience
+    aria-labelledby="experience-title"
+  >
+    <div class="section-heading-row">
+      <span class="eyebrow">02 / Selected experience</span>
+      <a class="text-link" href="/resume/">
+        Full résumé <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <h2 id="experience-title" class="section-display">
+      Work that shaped
+      <br />
+      <em>how I build.</em>
+    </h2>
+    <div class="experience-list">
+      {resume.experience.slice(0, 3).map((item) => (
+        <article>
+          <div>
+            <strong>{item.title}</strong>
+            <span>{item.organization}</span>
+          </div>
+          <time>
+            {item.start} — {item.end}
+          </time>
+        </article>
+      ))}
+    </div>
+  </section>
+)}

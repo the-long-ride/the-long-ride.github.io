@@ -1,0 +1,56 @@
+---
+import Header from "../components/navigation/Header.astro";
+import Footer from "../components/navigation/Footer.astro";
+import AmbientField from "../components/motion/AmbientField";
+import CursorFollower from "../components/motion/CursorFollower";
+import GoatCounter from "../components/head/GoatCounter.astro";
+import Seo from "../components/head/Seo.astro";
+import { siteConfig } from "../config/site";
+import "../styles/global.css";
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  bodyClass?: string;
+}
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  canonical = Astro.url.pathname,
+  bodyClass,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={siteConfig.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Seo title={title} description={description} canonical={canonical} />
+    <meta name="theme-color" content="#e9e5dd" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap"
+    />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main-content">
+      Skip to content
+    </a>
+    <div class="site-grid" aria-hidden="true"></div>
+    <div class="site-vignette" aria-hidden="true"></div>
+    <AmbientField client:load />
+    <CursorFollower client:load />
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <GoatCounter />
+  </body>
+</html>

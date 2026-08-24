@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectMeta from "../../components/projects/ProjectMeta.astro";
+import StatusBadge from "../../components/projects/StatusBadge.astro";
+import ExternalLink from "../../components/ui/ExternalLink.astro";
+import { getRepositoryMetadata } from "../../lib/github-metadata";
+export async function getStaticPaths() {
+  const entries = await getCollection("lab");
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+interface Props {
+  entry: CollectionEntry<"lab">;
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const metadata = await getRepositoryMetadata(entry.data.slug);
+---
+
+<BaseLayout title={`${entry.data.title} — Lab`} description={entry.data.summary}>
+  <article class="case-study lab-case-study">
+    <header class="case-study-header">
+      <a class="back-link" href="/lab/">
+        ← Lab
+      </a>
+      <div class="case-study-status">
+        <StatusBadge status={entry.data.status} />
+      </div>
+      <h1>{entry.data.title}</h1>
+      <p class="case-study-problem">{entry.data.problem}</p>
+      <p class="case-study-value">{entry.data.value}</p>
+      <div class="case-study-links">
+        <ExternalLink href={entry.data.repo}>Source repository</ExternalLink>
+      </div>
+      <ProjectMeta
+        role={entry.data.role}
+        stack={entry.data.stack}
+        status={entry.data.status}
+        metadata={metadata}
+      />
+    </header>
+    <div class="prose case-study-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

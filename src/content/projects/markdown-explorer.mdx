@@ -1,0 +1,43 @@
+---
+title: "Markdown Explorer"
+slug: "markdown-explorer"
+problem: "Markdown is an excellent interchange format for agents and repositories, but large Markdown workspaces become awkward for humans to browse, search, and read."
+value: "A private, local documentation experience that turns Markdown and MDX folders into searchable workspaces across VS Code, Chromium, and desktop apps."
+summary: "A local-first Markdown workspace reader with navigation, search, rich rendering, document conversion, tabs, charts, diagrams, and multi-runtime delivery."
+status: "released"
+releaseState: "released"
+category: "developer-tools"
+role: "Creator"
+stack: ["TypeScript", "React", "Tauri", "VS Code API", "Chromium"]
+repo: "https://github.com/the-long-ride/markdown-explorer"
+homepage: "https://the-long-ride.github.io/markdown-explorer/"
+featured: true
+featuredOrder: 3
+logo: "/projects/markdown-explorer/logo.png"
+deepDive: true
+---
+
+## Markdown for agents, navigation for humans
+
+Markdown files are easy to version, generate, diff, and hand to an AI agent. The friction appears when a folder becomes a real knowledge base: humans need navigation, search, readable rendering, tabs, and context across many files.
+
+Markdown Explorer turns `.md` and `.mdx` folders into local workspaces with a file tree, table of contents, recent workspaces, document tabs, and scoped search.
+
+## Rich documents without uploading them
+
+The renderer supports diagrams, math, highlighted code, videos, tables, charts, frontmatter, and other rich Markdown patterns. Optional local conversion extends previews to formats such as DOCX, PDF, spreadsheets, presentations, and text documents.
+
+The privacy boundary stays straightforward: rendering and indexing are local, with no telemetry and no file uploads.
+
+## One product, several surfaces
+
+The project spans VS Code, Chromium, and native desktop packaging. That makes the core product question less about “render Markdown” and more about preserving the same reading and navigation model across different host environments.
+
+### Product choices
+
+- **Workspace-first navigation** instead of treating files as isolated pages.
+- **Keyboard-first controls** for users already working in editors.
+- **Local search and indexing** rather than a hosted document service.
+- **Progressive document support** so richer formats do not weaken the Markdown-first core.
+
+The result is intentionally practical: make the files people and agents already use feel like a coherent documentation product without forcing those files into a new storage system.

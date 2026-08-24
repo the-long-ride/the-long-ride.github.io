@@ -1,0 +1,32 @@
+---
+import MagneticLink from "../motion/MagneticLink";
+import HeroGrid from "../motion/HeroGrid";
+import HeroSignal from "../motion/HeroSignal";
+---
+
+<section class="hero container" aria-labelledby="hero-title">
+  <HeroGrid client:load />
+  <div class="hero-index" aria-hidden="true">
+    <span>TL / 26</span>
+    <span>Software · systems · useful things</span>
+  </div>
+  <div class="hero-copy">
+    <p class="hero-kicker">Software // Agentic developer // Open-source builder</p>
+    <h1 id="hero-title" class="name-type">
+      Thế Long
+    </h1>
+    <p class="hero-statement">
+      I turn messy technical problems into thoughtful software people can actually use.
+    </p>
+  </div>
+  <div class="hero-actions" aria-label="Primary actions">
+    <MagneticLink client:load href="#selected-work" label="Explore selected work" />
+    <MagneticLink
+      client:load
+      href="/contact/"
+      label="Start a conversation"
+      className="magnetic-link-secondary"
+    />
+  </div>
+  <HeroSignal client:load />
+</section>

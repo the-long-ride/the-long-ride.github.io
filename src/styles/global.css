@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* foundation: design tokens, element defaults, motion primitives */
+@import "./foundation/tokens.css";
+@import "./foundation/base.css";
+@import "./foundation/scrollbar.css";
+@import "./foundation/motion.css";
+
+/* layout: site chrome shared by every page */
+@import "./layout/shell.css";
+
+/* sections: page- and feature-specific styles */
+@import "./sections/projects.css";
+@import "./sections/home.css";
+@import "./sections/secondary.css";
+@import "./sections/resume.css";
+
+/* typography overrides load last so families win over section rules */
+@import "./foundation/typography.css";

@@ -1,0 +1,39 @@
+---
+import ProjectCard from "../projects/ProjectCard.astro";
+import SectionLabel from "../ui/SectionLabel.astro";
+import type { RepositoryMetadata } from "../../lib/github-metadata";
+import type { PortfolioEntryLike } from "../../lib/content";
+interface Props {
+  projects: PortfolioEntryLike[];
+  metadata: Record<string, RepositoryMetadata>;
+}
+const { projects, metadata } = Astro.props;
+---
+
+<section
+  id="selected-work"
+  class="home-section selected-work container"
+  aria-labelledby="selected-work-title"
+>
+  <div class="section-heading-row">
+    <SectionLabel index="01" label="Selected work" />
+    <p>
+      Released public work. The problem comes first; the implementation is there when you want it.
+    </p>
+  </div>
+  <h2 id="selected-work-title" class="section-display">
+    Things I cared enough
+    <br />
+    to <em>finish and ship.</em>
+  </h2>
+  <div class="project-list home-project-list">
+    {projects.map((project, index) => (
+      <div data-featured-project={project.data.slug}>
+        <ProjectCard entry={project} metadata={metadata[project.data.slug]} index={index + 1} />
+      </div>
+    ))}
+  </div>
+  <a class="text-link section-more" href="/projects/">
+    All released projects <span aria-hidden="true">↗</span>
+  </a>
+</section>
