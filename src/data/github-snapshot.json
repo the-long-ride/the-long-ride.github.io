@@ -6,12 +6,12 @@
     "stars": 2,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.1.3",
-      "url": "https://github.com/the-long-ride/aevra/releases/tag/v1.1.3",
-      "publishedAt": "2026-09-27T22:57:52Z"
+      "tag": "v1.2.0",
+      "url": "https://github.com/the-long-ride/aevra/releases/tag/v1.2.0",
+      "publishedAt": "2026-10-09T01:34:53Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-10-05T22:46:01Z"
+    "updatedAt": "2026-10-09T01:29:28Z"
   },
   "engram": {
     "slug": "engram",
@@ -72,12 +72,12 @@
     "stars": 1,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.1.4",
-      "url": "https://github.com/the-long-ride/QuotaShift/releases/tag/v1.1.4",
-      "publishedAt": "2026-10-07T20:55:34Z"
+      "tag": "v1.1.5",
+      "url": "https://github.com/the-long-ride/QuotaShift/releases/tag/v1.1.5",
+      "publishedAt": "2026-10-09T07:07:12Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-10-07T20:35:03Z"
+    "updatedAt": "2026-10-09T06:56:56Z"
   },
   "voxveil": {
     "slug": "voxveil",
