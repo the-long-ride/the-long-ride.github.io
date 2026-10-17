@@ -44,12 +44,12 @@
     "stars": 11,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.7.0",
-      "url": "https://github.com/the-long-ride/markdown-explorer/releases/tag/v1.7.0",
-      "publishedAt": "2026-09-29T11:13:05Z"
+      "tag": "v1.7.1",
+      "url": "https://github.com/the-long-ride/markdown-explorer/releases/tag/v1.7.1",
+      "publishedAt": "2026-10-16T09:49:57Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-09-30T06:55:31Z"
+    "updatedAt": "2026-10-17T05:39:00Z"
   },
   "markdown-them": {
     "slug": "markdown-them",
