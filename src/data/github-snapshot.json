@@ -6,12 +6,12 @@
     "stars": 2,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.2.1",
-      "url": "https://github.com/the-long-ride/aevra/releases/tag/v1.2.1",
-      "publishedAt": "2026-10-12T01:09:25Z"
+      "tag": "v1.3.1",
+      "url": "https://github.com/the-long-ride/aevra/releases/tag/v1.3.1",
+      "publishedAt": "2026-10-19T07:29:50Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-10-12T01:03:47Z"
+    "updatedAt": "2026-10-19T07:08:38Z"
   },
   "engram": {
     "slug": "engram",
