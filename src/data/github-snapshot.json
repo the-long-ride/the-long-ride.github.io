@@ -3,7 +3,7 @@
     "slug": "aevra",
     "name": "aevra",
     "url": "https://github.com/the-long-ride/aevra",
-    "stars": 2,
+    "stars": 3,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
       "tag": "v1.3.1",
@@ -11,7 +11,7 @@
       "publishedAt": "2026-10-19T07:29:50Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-10-19T07:08:38Z"
+    "updatedAt": "2026-10-24T12:05:51Z"
   },
   "engram": {
     "slug": "engram",
