@@ -3,7 +3,7 @@
     "slug": "aevra",
     "name": "aevra",
     "url": "https://github.com/the-long-ride/aevra",
-    "stars": 3,
+    "stars": 4,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
       "tag": "v1.3.2",
@@ -11,7 +11,7 @@
       "publishedAt": "2026-10-30T11:19:29Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-10-30T11:12:27Z"
+    "updatedAt": "2026-11-01T09:41:36Z"
   },
   "engram": {
     "slug": "engram",
@@ -41,7 +41,7 @@
     "slug": "markdown-explorer",
     "name": "markdown-explorer",
     "url": "https://github.com/the-long-ride/markdown-explorer",
-    "stars": 13,
+    "stars": 14,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
       "tag": "v1.7.1",
@@ -49,13 +49,13 @@
       "publishedAt": "2026-10-16T09:49:57Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-10-29T00:45:31Z"
+    "updatedAt": "2026-11-01T09:41:29Z"
   },
   "markdown-them": {
     "slug": "markdown-them",
     "name": "markdown-them",
     "url": "https://github.com/the-long-ride/markdown-them",
-    "stars": 3,
+    "stars": 4,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
       "tag": "v1.3.2",
@@ -63,13 +63,13 @@
       "publishedAt": "2026-08-11T04:54:49Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-10-27T05:21:02Z"
+    "updatedAt": "2026-11-01T09:41:43Z"
   },
   "quotashift": {
     "slug": "quotashift",
     "name": "QuotaShift",
     "url": "https://github.com/the-long-ride/QuotaShift",
-    "stars": 1,
+    "stars": 2,
     "primaryLanguage": "Rust",
     "latestRelease": {
       "tag": "v1.2.1",
@@ -77,7 +77,7 @@
       "publishedAt": "2026-10-28T12:04:41Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-10-28T11:48:49Z"
+    "updatedAt": "2026-11-01T09:41:46Z"
   },
   "voxveil": {
     "slug": "voxveil",
