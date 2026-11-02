@@ -11,7 +11,7 @@
       "publishedAt": "2026-10-30T11:19:29Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-11-01T09:41:36Z"
+    "updatedAt": "2026-11-01T13:08:17Z"
   },
   "engram": {
     "slug": "engram",
@@ -58,12 +58,12 @@
     "stars": 4,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.3.2",
-      "url": "https://github.com/the-long-ride/markdown-them/releases/tag/v1.3.2",
-      "publishedAt": "2026-08-11T04:54:49Z"
+      "tag": "v1.4.0",
+      "url": "https://github.com/the-long-ride/markdown-them/releases/tag/v1.4.0",
+      "publishedAt": "2026-11-02T11:35:20Z"
     },
     "hasRelease": true,
-    "updatedAt": "2026-11-01T09:41:43Z"
+    "updatedAt": "2026-11-02T11:09:30Z"
   },
   "quotashift": {
     "slug": "quotashift",
