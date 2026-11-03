@@ -3,6 +3,7 @@ import Header from "../components/navigation/Header.astro";
 import Footer from "../components/navigation/Footer.astro";
 import AmbientField from "../components/motion/AmbientField";
 import CursorFollower from "../components/motion/CursorFollower";
+import ScrollEnhancer from "../components/motion/ScrollEnhancer";
 import GoatCounter from "../components/head/GoatCounter.astro";
 import Seo from "../components/head/Seo.astro";
 import { siteConfig } from "../config/site";
@@ -46,6 +47,7 @@ const {
     <div class="site-vignette" aria-hidden="true"></div>
     <AmbientField client:load />
     <CursorFollower client:load />
+    <ScrollEnhancer client:load />
     <Header />
     <main id="main-content">
       <slot />

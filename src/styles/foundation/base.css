@@ -14,14 +14,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background:
-    linear-gradient(
-      to right,
-      transparent calc(50% - 0.5px),
-      rgba(23, 23, 22, 0.035) 50%,
-      transparent calc(50% + 0.5px)
-    ),
-    var(--paper);
+  background: var(--paper);
 }
 
 ::selection {

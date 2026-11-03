@@ -36,4 +36,8 @@
   /* pointer motion: resting values; CursorFollower overrides them at runtime */
   --cursor-nx: 0;
   --cursor-ny: 0;
+
+  /* scroll motion: resting values; ScrollEnhancer overrides them at runtime */
+  --scroll-progress: 0;
+  --stagger: 0;
 }
