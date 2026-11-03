@@ -11,5 +11,8 @@ export default defineConfig({
   integrations: [mdx(), react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      dedupe: ["react", "react-dom"],
+    },
   },
 });
