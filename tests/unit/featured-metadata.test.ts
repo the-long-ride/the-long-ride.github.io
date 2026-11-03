@@ -8,6 +8,8 @@ describe("featured project metadata", () => {
     expect(approvedFeaturedSlugs).toEqual([
       "engram",
       "aevra",
+      "aevra-desktop-use",
+      "aevra-browser-use",
       "markdown-explorer",
       "quotashift",
       "markdown-them",

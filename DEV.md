@@ -29,6 +29,8 @@
 - Released projects:
   - Engram
   - Aevra
+  - Aevra Desktop Use
+  - Aevra Browser Use
   - Markdown Explorer
   - QuotaShift
   - Markdown Them
@@ -91,8 +93,10 @@ tests/unit, tests/e2e
 - The name "Thế Long" keeps the original sans stack via `.name-type`; Orbitron has no Vietnamese diacritics.
 - Font families live in `src/styles/foundation/tokens.css`; `typography.css` assigns them.
 
-## Project Logos
-- Featured cards render `logo` from frontmatter (`/projects/<slug>/logo.png|svg` in `public/`), copied from each app repo.
+## Project Logos & Metadata Links
+- Project cards and case studies use dynamic repository links for each project's logo, latest version release, and total asset downloads instead of static values.
+- Dynamic logo links resolve to each repository's raw asset URL (`raw.githubusercontent.com/the-long-ride/...`), with local asset fallback in `public/projects/`.
+- Latest releases and total asset download counts are fetched from the GitHub Releases API at build time with committed fallback snapshot in `src/data/github-snapshot.json`.
 - `content:validate` fails if a featured project has no logo or the file is missing.
 
 ## Profile

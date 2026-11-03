@@ -16,8 +16,8 @@ const common = {
   demo: z.url().optional(),
   docs: z.url().optional(),
   logo: z
-    .string()
-    .regex(/^\/projects\/[a-z0-9-]+\/logo\.(png|svg)$/)
+    .url()
+    .or(z.string().regex(/^\/projects\/[a-z0-9-]+\/logo\.(png|svg)$/))
     .optional(),
   featuredOrder: z.number().int().positive().optional(),
   deepDive: z.boolean().default(false),

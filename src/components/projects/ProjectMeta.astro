@@ -17,9 +17,37 @@ const { role, stack, status, metadata } = Astro.props;
   <div>
     <dt>Status</dt>
     <dd>
-      {status === "released" ? (metadata?.latestRelease?.tag ?? "Released") : "In development"}
+      {status === "released" && metadata?.latestRelease ? (
+        <a
+          href={metadata.latestRelease.url}
+          target="_blank"
+          rel="noreferrer"
+          title={`View ${metadata.latestRelease.tag} on GitHub`}
+        >
+          {metadata.latestRelease.tag}
+        </a>
+      ) : status === "released" ? (
+        "Released"
+      ) : (
+        "In development"
+      )}
     </dd>
   </div>
+  {metadata?.totalDownloads !== undefined && metadata.totalDownloads > 0 && (
+    <div>
+      <dt>Downloads</dt>
+      <dd>
+        <a
+          href={`${metadata.url}/releases`}
+          target="_blank"
+          rel="noreferrer"
+          title="View release downloads on GitHub"
+        >
+          {metadata.totalDownloads.toLocaleString()} assets
+        </a>
+      </dd>
+    </div>
+  )}
   <div>
     <dt>Stack</dt>
     <dd>{stack.join(" · ")}</dd>

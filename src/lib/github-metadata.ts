@@ -1,5 +1,7 @@
 import snapshotData from "../data/github-snapshot.json";
+
 export type LatestRelease = { tag: string; url: string; publishedAt: string };
+
 export type RepositoryMetadata = {
   slug: string;
   name: string;
@@ -8,9 +10,13 @@ export type RepositoryMetadata = {
   primaryLanguage: string | null;
   latestRelease: LatestRelease | null;
   hasRelease: boolean;
+  totalDownloads: number;
+  logoUrl: string | null;
   updatedAt: string;
 };
+
 export type RepositoryMetadataSnapshot = Record<string, RepositoryMetadata>;
+
 type GithubRepositoryResponse = {
   name: string;
   html_url: string;
@@ -18,36 +24,77 @@ type GithubRepositoryResponse = {
   language: string | null;
   updated_at: string;
 };
-type GithubReleaseResponse = { tag_name: string; html_url: string; published_at: string };
+
+type GithubAssetResponse = { download_count: number };
+
+type GithubReleaseResponse = {
+  tag_name: string;
+  html_url: string;
+  published_at: string;
+  assets?: GithubAssetResponse[];
+};
+
 export const portfolioRepositories = {
   engram: "engram",
   aevra: "aevra",
+  "aevra-desktop-use": "aevra-desktop-use",
+  "aevra-browser-use": "aevra-browser-use",
   "markdown-explorer": "markdown-explorer",
   quotashift: "QuotaShift",
   "markdown-them": "markdown-them",
   voxveil: "Voxveil",
   "know-your-project": "know-your-project",
 } as const;
+
+export const repositoryLogos: Record<string, string> = {
+  engram:
+    "https://raw.githubusercontent.com/the-long-ride/engram/main/media/logo/engram-logo-black-transparent.svg",
+  aevra: "https://raw.githubusercontent.com/the-long-ride/aevra/main/assets/aevra-logo.png",
+  "aevra-desktop-use":
+    "https://raw.githubusercontent.com/the-long-ride/aevra-desktop-use/main/packaging/icons/aevra-logo.png",
+  "aevra-browser-use":
+    "https://raw.githubusercontent.com/the-long-ride/aevra-browser-use/main/shared/aevra/apps/extension/icons/icon-128.png",
+  "markdown-explorer":
+    "https://raw.githubusercontent.com/the-long-ride/markdown-explorer/main/ui/assets/logos/logo.png",
+  quotashift:
+    "https://raw.githubusercontent.com/the-long-ride/QuotaShift/main/assets/icons/quota-shift-logo.png",
+  "markdown-them":
+    "https://raw.githubusercontent.com/the-long-ride/markdown-them/main/assets/markdown-them-logo.png",
+  voxveil: "https://raw.githubusercontent.com/the-long-ride/Voxveil/master/assets/voxveil-logo.png",
+};
+
 export type PortfolioRepositorySlug = keyof typeof portfolioRepositories;
+
 const defaultSnapshot = snapshotData as RepositoryMetadataSnapshot;
+
 export function normalizeRepositoryMetadata(
   slug: string,
   repo: GithubRepositoryResponse,
-  release: GithubReleaseResponse | null,
+  releases: GithubReleaseResponse[] | GithubReleaseResponse | null,
 ): RepositoryMetadata {
+  const releasesList = Array.isArray(releases) ? releases : releases ? [releases] : [];
+  const latest = releasesList[0] ?? null;
+  const totalDownloads = releasesList.reduce((acc, rel) => {
+    const assets = rel.assets ?? [];
+    return acc + assets.reduce((sum, asset) => sum + (asset.download_count ?? 0), 0);
+  }, 0);
+
   return {
     slug,
     name: repo.name,
     url: repo.html_url,
     stars: repo.stargazers_count,
     primaryLanguage: repo.language,
-    latestRelease: release
-      ? { tag: release.tag_name, url: release.html_url, publishedAt: release.published_at }
+    latestRelease: latest
+      ? { tag: latest.tag_name, url: latest.html_url, publishedAt: latest.published_at }
       : null,
-    hasRelease: Boolean(release),
+    hasRelease: Boolean(latest),
+    totalDownloads,
+    logoUrl: repositoryLogos[slug] ?? null,
     updatedAt: repo.updated_at,
   };
 }
+
 async function githubJson<T>(
   url: string,
   fetcher: typeof fetch,
@@ -65,6 +112,7 @@ async function githubJson<T>(
   if (!response.ok) throw new Error(`GitHub request failed (${response.status}) for ${url}`);
   return (await response.json()) as T;
 }
+
 export async function getRepositoryMetadata(
   slug: string,
   fetcher: typeof fetch = fetch,
@@ -78,11 +126,11 @@ export async function getRepositoryMetadata(
   }
   try {
     const repoUrl = `https://api.github.com/repos/the-long-ride/${repoName}`;
-    const releaseUrl = `${repoUrl}/releases/latest`;
+    const releasesUrl = `${repoUrl}/releases`;
     const repo = await githubJson<GithubRepositoryResponse>(repoUrl, fetcher);
-    const release = await githubJson<GithubReleaseResponse>(releaseUrl, fetcher, true);
+    const releases = await githubJson<GithubReleaseResponse[]>(releasesUrl, fetcher, true);
     if (!repo) throw new Error(`GitHub returned no repository payload for ${slug}`);
-    return normalizeRepositoryMetadata(slug, repo, release);
+    return normalizeRepositoryMetadata(slug, repo, releases);
   } catch (error) {
     const fallback = snapshot[slug];
     if (fallback) {
@@ -94,6 +142,7 @@ export async function getRepositoryMetadata(
     throw new Error(`No metadata available for repository: ${slug}`, { cause: error });
   }
 }
+
 export async function loadPortfolioMetadata(
   fetcher: typeof fetch = fetch,
   snapshot: RepositoryMetadataSnapshot = defaultSnapshot,

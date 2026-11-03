@@ -3,7 +3,15 @@ import path from "node:path";
 
 const root = process.cwd();
 const dirs = { projects: "src/content/projects", lab: "src/content/lab" };
-const approvedFeatured = ["engram", "aevra", "markdown-explorer", "quotashift", "markdown-them"];
+const approvedFeatured = [
+  "engram",
+  "aevra",
+  "aevra-desktop-use",
+  "aevra-browser-use",
+  "markdown-explorer",
+  "quotashift",
+  "markdown-them",
+];
 
 function field(frontmatter, key) {
   const match = frontmatter.match(new RegExp(`^${key}:\\s*(.+)$`, "m"));
@@ -55,7 +63,7 @@ for (const item of entries) {
   if (!item.slug || seen.has(item.slug)) errors.push(`${item.file}: missing or duplicate slug`);
   seen.add(item.slug);
   if (!item.problem || !item.value) errors.push(`${item.file}: problem and value are required`);
-  if (item.featured && !item.logo) errors.push(`${item.file}: featured projects need a local logo`);
+  if (item.featured && !item.logo) errors.push(`${item.file}: featured projects need a logo`);
   if (!item.repo?.startsWith("https://github.com/the-long-ride/"))
     errors.push(`${item.file}: repo must be a public the-long-ride GitHub URL`);
   if (item.featured && item.status !== "released")

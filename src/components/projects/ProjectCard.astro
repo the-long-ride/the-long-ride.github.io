@@ -21,23 +21,28 @@ interface Props {
 const { entry, metadata, index, collection = "projects" } = Astro.props;
 const { data } = entry;
 const href = collection === "lab" ? `/lab/${data.slug}/` : `/projects/${data.slug}/`;
+const logoSrc = metadata?.logoUrl ?? data.logo;
 const marks: Record<string, string> = {
   engram: "EN",
   aevra: "AE",
+  "aevra-desktop-use": "AD",
+  "aevra-browser-use": "AB",
   "markdown-explorer": "MD",
   quotashift: "QS",
+  "markdown-them": "MT",
   voxveil: "VX",
   "know-your-project": "KP",
 };
 ---
 
 <article class="project-card" data-project={data.slug}>
-  <a class="project-card-main" href={href} aria-label={`Read ${data.title} case study`}>
+  <div class="project-card-main">
+    <a class="project-card-click-area" href={href} aria-label={`Read ${data.title} case study`}></a>
     <div class="project-visual" aria-hidden="true">
-      {data.logo ? (
+      {logoSrc ? (
         <img
           class="project-logo"
-          src={data.logo}
+          src={logoSrc}
           alt=""
           width="256"
           height="256"
@@ -57,16 +62,41 @@ const marks: Record<string, string> = {
         <span class="eyebrow">{String(index).padStart(2, "0")} / Selected system</span>
         <StatusBadge status={data.status} />
       </div>
-      <h2>{data.title}</h2>
+      <h2>
+        <a class="project-title-link" href={href}>
+          {data.title}
+        </a>
+      </h2>
       <p class="project-problem">{data.problem}</p>
       <p class="project-value">{data.value}</p>
       <div class="project-card-foot">
         <span>{data.stack.slice(0, 3).join(" · ")}</span>
-        {metadata?.latestRelease?.tag && <span>{metadata.latestRelease.tag}</span>}
+        {metadata?.latestRelease?.tag && (
+          <a
+            class="project-foot-link"
+            href={metadata.latestRelease.url}
+            target="_blank"
+            rel="noreferrer"
+            title={`View ${metadata.latestRelease.tag} release on GitHub`}
+          >
+            {metadata.latestRelease.tag}
+          </a>
+        )}
+        {metadata?.totalDownloads !== undefined && metadata.totalDownloads > 0 && (
+          <a
+            class="project-foot-link"
+            href={`${metadata.url}/releases`}
+            target="_blank"
+            rel="noreferrer"
+            title="View total asset downloads on GitHub"
+          >
+            ↓ {metadata.totalDownloads.toLocaleString()} assets
+          </a>
+        )}
         <span class="project-arrow" aria-hidden="true">
           ↗
         </span>
       </div>
     </div>
-  </a>
+  </div>
 </article>

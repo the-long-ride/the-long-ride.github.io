@@ -22,6 +22,8 @@ export type PortfolioEntryLike = {
 export const approvedFeaturedSlugs = [
   "engram",
   "aevra",
+  "aevra-desktop-use",
+  "aevra-browser-use",
   "markdown-explorer",
   "quotashift",
   "markdown-them",

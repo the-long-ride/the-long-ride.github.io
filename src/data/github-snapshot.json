@@ -11,13 +11,47 @@
       "publishedAt": "2026-10-30T11:19:29Z"
     },
     "hasRelease": true,
+    "totalDownloads": 46,
+    "logoUrl": "https://raw.githubusercontent.com/the-long-ride/aevra/main/assets/aevra-logo.png",
     "updatedAt": "2026-11-01T13:08:17Z"
+  },
+  "aevra-browser-use": {
+    "slug": "aevra-browser-use",
+    "name": "aevra-browser-use",
+    "url": "https://github.com/the-long-ride/aevra-browser-use",
+    "stars": 0,
+    "primaryLanguage": "TypeScript",
+    "latestRelease": {
+      "tag": "v1.0.0",
+      "url": "https://github.com/the-long-ride/aevra-browser-use/releases/tag/v1.0.0",
+      "publishedAt": "2026-10-19T00:00:00Z"
+    },
+    "hasRelease": true,
+    "totalDownloads": 0,
+    "logoUrl": "https://raw.githubusercontent.com/the-long-ride/aevra-browser-use/main/shared/aevra/apps/extension/icons/icon-128.png",
+    "updatedAt": "2026-10-19T00:00:00Z"
+  },
+  "aevra-desktop-use": {
+    "slug": "aevra-desktop-use",
+    "name": "aevra-desktop-use",
+    "url": "https://github.com/the-long-ride/aevra-desktop-use",
+    "stars": 0,
+    "primaryLanguage": "Rust",
+    "latestRelease": {
+      "tag": "v1.0.0",
+      "url": "https://github.com/the-long-ride/aevra-desktop-use/releases/tag/v1.0.0",
+      "publishedAt": "2026-10-19T00:00:00Z"
+    },
+    "hasRelease": true,
+    "totalDownloads": 0,
+    "logoUrl": "https://raw.githubusercontent.com/the-long-ride/aevra-desktop-use/main/packaging/icons/aevra-logo.png",
+    "updatedAt": "2026-10-19T00:00:00Z"
   },
   "engram": {
     "slug": "engram",
     "name": "engram",
     "url": "https://github.com/the-long-ride/engram",
-    "stars": 6,
+    "stars": 0,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
       "tag": "v0.0.29",
@@ -25,6 +59,8 @@
       "publishedAt": "2026-10-14T23:15:35Z"
     },
     "hasRelease": true,
+    "totalDownloads": 2,
+    "logoUrl": "https://raw.githubusercontent.com/the-long-ride/engram/main/media/logo/engram-logo-black-transparent.svg",
     "updatedAt": "2026-10-13T03:39:24Z"
   },
   "know-your-project": {
@@ -35,6 +71,8 @@
     "primaryLanguage": "Python",
     "latestRelease": null,
     "hasRelease": false,
+    "totalDownloads": 0,
+    "logoUrl": null,
     "updatedAt": "2026-09-13T12:03:29Z"
   },
   "markdown-explorer": {
@@ -49,6 +87,8 @@
       "publishedAt": "2026-10-16T09:49:57Z"
     },
     "hasRelease": true,
+    "totalDownloads": 252,
+    "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-explorer/main/ui/assets/logos/logo.png",
     "updatedAt": "2026-11-01T09:41:29Z"
   },
   "markdown-them": {
@@ -63,6 +103,8 @@
       "publishedAt": "2026-11-02T11:35:20Z"
     },
     "hasRelease": true,
+    "totalDownloads": 89,
+    "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-them/main/assets/markdown-them-logo.png",
     "updatedAt": "2026-11-03T05:33:29Z"
   },
   "quotashift": {
@@ -77,6 +119,8 @@
       "publishedAt": "2026-10-28T12:04:41Z"
     },
     "hasRelease": true,
+    "totalDownloads": 93,
+    "logoUrl": "https://raw.githubusercontent.com/the-long-ride/QuotaShift/main/assets/icons/quota-shift-logo.png",
     "updatedAt": "2026-11-01T09:41:46Z"
   },
   "voxveil": {
@@ -87,6 +131,8 @@
     "primaryLanguage": "JavaScript",
     "latestRelease": null,
     "hasRelease": false,
+    "totalDownloads": 0,
+    "logoUrl": "https://raw.githubusercontent.com/the-long-ride/Voxveil/master/assets/voxveil-logo.png",
     "updatedAt": "2026-09-25T04:08:24Z"
   }
 }

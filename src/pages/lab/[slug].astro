@@ -16,6 +16,7 @@ interface Props {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const metadata = await getRepositoryMetadata(entry.data.slug);
+const logoSrc = metadata.logoUrl ?? entry.data.logo;
 ---
 
 <BaseLayout title={`${entry.data.title} — Lab`} description={entry.data.summary}>
@@ -27,7 +28,28 @@ const metadata = await getRepositoryMetadata(entry.data.slug);
       <div class="case-study-status">
         <StatusBadge status={entry.data.status} />
       </div>
-      <h1>{entry.data.title}</h1>
+      <div class="case-study-title-row">
+        {logoSrc && (
+          <a
+            class="case-study-logo-link"
+            href={metadata.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`View ${entry.data.title} repository`}
+          >
+            <img
+              class="case-study-logo"
+              src={logoSrc}
+              alt=""
+              width="64"
+              height="64"
+              loading="eager"
+              decoding="async"
+            />
+          </a>
+        )}
+        <h1>{entry.data.title}</h1>
+      </div>
       <p class="case-study-problem">{entry.data.problem}</p>
       <p class="case-study-value">{entry.data.value}</p>
       <div class="case-study-links">

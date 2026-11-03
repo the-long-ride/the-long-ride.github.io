@@ -16,6 +16,7 @@ interface Props {
 const { project } = Astro.props;
 const { Content } = await render(project);
 const metadata = await getRepositoryMetadata(project.data.slug);
+const logoSrc = metadata.logoUrl ?? project.data.logo;
 ---
 
 <BaseLayout title={project.data.title} description={project.data.summary}>
@@ -27,7 +28,28 @@ const metadata = await getRepositoryMetadata(project.data.slug);
       <div class="case-study-status">
         <StatusBadge status={project.data.status} />
       </div>
-      <h1>{project.data.title}</h1>
+      <div class="case-study-title-row">
+        {logoSrc && (
+          <a
+            class="case-study-logo-link"
+            href={metadata.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`View ${project.data.title} repository`}
+          >
+            <img
+              class="case-study-logo"
+              src={logoSrc}
+              alt=""
+              width="64"
+              height="64"
+              loading="eager"
+              decoding="async"
+            />
+          </a>
+        )}
+        <h1>{project.data.title}</h1>
+      </div>
       <p class="case-study-problem">{project.data.problem}</p>
       <p class="case-study-value">{project.data.value}</p>
       <div class="case-study-links">
@@ -37,6 +59,16 @@ const metadata = await getRepositoryMetadata(project.data.slug);
         <ExternalLink href={project.data.repo}>Source repository</ExternalLink>
         {project.data.demo && <ExternalLink href={project.data.demo}>Live demo</ExternalLink>}
         {project.data.docs && <ExternalLink href={project.data.docs}>Documentation</ExternalLink>}
+        {metadata.latestRelease && (
+          <ExternalLink href={metadata.latestRelease.url}>
+            Release {metadata.latestRelease.tag}
+          </ExternalLink>
+        )}
+        {metadata.totalDownloads > 0 && (
+          <ExternalLink href={`${metadata.url}/releases`}>
+            {metadata.totalDownloads.toLocaleString()} downloads
+          </ExternalLink>
+        )}
       </div>
       <ProjectMeta
         role={project.data.role}
