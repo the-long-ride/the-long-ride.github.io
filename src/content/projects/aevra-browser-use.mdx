@@ -1,0 +1,30 @@
+---
+title: "Aevra Browser Use"
+slug: "aevra-browser-use"
+problem: "AI browser automation typically takes over the active browser window or requires heavyweight cloud browsers, interrupting normal work and leaking session context."
+value: "A standalone browser-control MCP server that pairs with Chrome/Edge via extension or CDP for mouse-free, tab-targeted automation that runs in background tabs while you browse normally."
+summary: "A standalone browser-control MCP server for mouse-free, tab-targeted automation across Chrome/Edge extension and CDP connections."
+status: "released"
+releaseState: "released"
+category: "ai"
+role: "Creator"
+stack: ["TypeScript", "Node.js", "Chrome Extension", "CDP", "MCP"]
+repo: "https://github.com/the-long-ride/aevra-browser-use"
+featured: true
+featuredOrder: 4
+logo: "https://raw.githubusercontent.com/the-long-ride/aevra-browser-use/main/shared/aevra/apps/extension/icons/icon-128.png"
+deepDive: false
+---
+
+## Keep browsing while the agent works
+
+Aevra Browser Use is a standalone browser-control MCP server built on Aevra's browser extension and CDP drivers. A single local daemon exposes ten `browser_*` tools over loopback HTTP and stdio, allowing any number of AI coding assistants or MCP clients to share a paired browser without needing the full Aevra gateway.
+
+## Mouse-free, tab-targeted automation
+
+The architecture delivers actions directly to specific browser tabs rather than through system-wide cursor movement:
+
+- **Targeted Tab Automation**: Agents read and interact with their assigned `tabId` via the extension or Chrome DevTools Protocol (CDP) while you type and click in another tab.
+- **One Daemon, Multiple Clients**: Multiple MCP clients share the same daemon and paired browser instead of spawning duplicate browser instances.
+- **Bounded Toolset**: Ten focused tools for navigation, observation, and actions with credential-field refusals and redactions for untrusted page content.
+- **Agent Integration**: Built-in support for assistants including Claude Code, Codex, and Antigravity with automated configuration injection.

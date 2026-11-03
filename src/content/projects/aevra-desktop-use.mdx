@@ -1,0 +1,30 @@
+---
+title: "Aevra Desktop Use"
+slug: "aevra-desktop-use"
+problem: "AI agents need to interact with local desktop applications, but conventional computer use relies on screen coordinates and shared OS mouse/keyboard input that disrupts human work."
+value: "A native desktop-control MCP server that exposes semantic UI Automation and AT-SPI accessibility actions so agents can click, type, and inspect in the background while you keep using your mouse and keyboard."
+summary: "A native desktop-control MCP server with mouse-free background automation, explicit application allowlisting, and system accessibility integration."
+status: "released"
+releaseState: "released"
+category: "ai"
+role: "Creator"
+stack: ["Rust", "Tokio", "Axum", "UI Automation", "AT-SPI", "MCP"]
+repo: "https://github.com/the-long-ride/aevra-desktop-use"
+featured: true
+featuredOrder: 3
+logo: "https://raw.githubusercontent.com/the-long-ride/aevra-desktop-use/main/packaging/icons/aevra-logo.png"
+deepDive: false
+---
+
+## Keep using your mouse while the agent works
+
+Aevra Desktop Use is a native desktop-control MCP server that exposes local desktop backends from Aevra directly to MCP clients over stdio and loopback HTTP. It brings mouse-free background automation to desktop applications: an agent can invoke buttons, set values, select items, and toggle controls through native accessibility APIs (Windows UI Automation, macOS AX, Linux AT-SPI) while you continue using your mouse and keyboard elsewhere.
+
+## App access you can see
+
+Nothing on the desktop is reachable until you explicitly allow it:
+
+- **Application Allowlist**: Manage which executables AI clients may touch through a tray icon and native settings window. Changes apply live to running clients.
+- **Semantic Background Operations**: Direct control targeting (`desktop_describe`, `desktop_invoke`, `desktop_set_value`) interacts with controls semantically without synthesizing coordinate clicks.
+- **Foreground Fallback**: Explicit screenshot and foreground-input tools handle workflows and graphical applications that require pixels or OS events.
+- **Activity History**: Searchable, filterable audit log of desktop actions and HTTP state.

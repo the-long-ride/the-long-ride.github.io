@@ -16,7 +16,7 @@ test("internal navigation resolves and release status remains honest", async ({
     expect(response.status(), href).toBeLessThan(400);
   }
   await page.goto("/projects/");
-  await expect(page.locator(".status-released")).toHaveCount(5);
+  await expect(page.locator(".status-released")).toHaveCount(7);
   await page.goto("/lab/");
   await expect(page.locator(".status-in-development")).toHaveCount(2);
   await page.goto("/contact/");

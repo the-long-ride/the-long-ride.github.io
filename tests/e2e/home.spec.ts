@@ -1,6 +1,14 @@
 import { test, expect } from "@playwright/test";
 
-const featuredSlugs = ["engram", "aevra", "markdown-explorer", "quotashift", "markdown-them"];
+const featuredSlugs = [
+  "engram",
+  "aevra",
+  "aevra-desktop-use",
+  "aevra-browser-use",
+  "markdown-explorer",
+  "quotashift",
+  "markdown-them",
+];
 
 test("homepage tells the portfolio story without fabricated sections", async ({ page }) => {
   await page.goto("/");
@@ -15,10 +23,12 @@ test("homepage tells the portfolio story without fabricated sections", async ({ 
   );
 
   const featured = page.locator("[data-featured-project]");
-  await expect(featured).toHaveCount(5);
+  await expect(featured).toHaveCount(7);
   await expect(featured).toContainText([
     "Engram",
     "Aevra",
+    "Aevra Desktop Use",
+    "Aevra Browser Use",
     "Markdown Explorer",
     "QuotaShift",
     "Markdown Them",
@@ -28,14 +38,16 @@ test("homepage tells the portfolio story without fabricated sections", async ({ 
   await expect(page.locator("[data-writing-preview]")).toHaveCount(0);
 });
 
-test("each featured project shows its own app logo from local assets", async ({ page }) => {
+test("each featured project shows its own app logo from dynamic repo link", async ({ page }) => {
   await page.goto("/");
   for (const slug of featuredSlugs) {
     const logo = page.locator(`[data-featured-project="${slug}"] img.project-logo`);
     await expect(logo, slug).toHaveCount(1);
     await expect(logo, slug).toHaveAttribute(
       "src",
-      new RegExp(`^/projects/${slug}/logo\\.(png|svg)$`),
+      new RegExp(
+        `^(https://raw\\.githubusercontent\\.com/the-long-ride/|/projects/${slug}/logo\\.(png|svg)$)`,
+      ),
     );
     await logo.scrollIntoViewIfNeeded();
     const loaded = await logo.evaluate(

@@ -31,13 +31,17 @@ describe("portfolio content invariants", () => {
     const entries = [
       entry("engram", { featuredOrder: 1 }),
       entry("aevra", { featuredOrder: 2 }),
-      entry("markdown-explorer", { featuredOrder: 3 }),
-      entry("quotashift", { featuredOrder: 4 }),
-      entry("markdown-them", { featuredOrder: 5 }),
+      entry("aevra-desktop-use", { featuredOrder: 3 }),
+      entry("aevra-browser-use", { featuredOrder: 4 }),
+      entry("markdown-explorer", { featuredOrder: 5 }),
+      entry("quotashift", { featuredOrder: 6 }),
+      entry("markdown-them", { featuredOrder: 7 }),
     ];
     expect(getFeaturedProjects(entries as never).map((item) => item.data.slug)).toEqual([
       "engram",
       "aevra",
+      "aevra-desktop-use",
+      "aevra-browser-use",
       "markdown-explorer",
       "quotashift",
       "markdown-them",
