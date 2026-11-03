@@ -369,7 +369,7 @@ body {
 }
 
 .content-page {
-  padding-top: clamp(4rem, 8vw, 8rem);
+  padding-top: clamp(2rem, 5vw, 4.5rem);
 }
 
 .content-header {
