@@ -47,34 +47,29 @@ test("hero copy and actions stay still when the mouse moves", async ({ page }) =
   }
 });
 
-test("hero squares darken under the mouse", async ({ page }) => {
+test("hero constellation mesh renders and responds to mouse movement", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   const grid = page.locator("[data-hero-grid]");
   await expect(grid).toHaveAttribute("data-motion-mode", "full");
   const box = await grid.boundingBox();
   if (!box) throw new Error("hero grid has no box");
-  const x = box.x + 125;
-  const y = box.y + 175;
-  await page.mouse.move(x - 60, y - 60);
+  const x = box.x + 250;
+  const y = box.y + 250;
+  await page.mouse.move(x - 50, y - 50);
   await page.mouse.move(x, y, { steps: 4 });
-  await expect(grid).toHaveAttribute("data-active-cell", "2,3");
-  const shade = (px: number, py: number) =>
-    grid.evaluate(
-      (canvas: HTMLCanvasElement, [cx, cy]) => {
-        const dpr = window.devicePixelRatio || 1;
-        const ctx = canvas.getContext("2d");
-        return ctx?.getImageData(cx * dpr, cy * dpr, 1, 1).data[3] ?? 0;
-      },
-      [px, py],
-    );
-  await expect.poll(() => shade(125, 175)).toBeGreaterThan(25);
-  const hovered = await shade(125, 175);
-  const neighbour = await shade(175, 175);
-  const far = await shade(425, 175);
-  expect(neighbour).toBeGreaterThan(0);
-  expect(neighbour).toBeLessThan(hovered);
-  expect(far).toBeLessThan(neighbour);
+  await expect(grid).toHaveAttribute("data-active-cursor", "250,250");
+  const drawnPixelCount = await grid.evaluate((canvas: HTMLCanvasElement) => {
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return 0;
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    let nonZero = 0;
+    for (let i = 3; i < data.length; i += 16) {
+      if (data[i] > 0) nonZero++;
+    }
+    return nonZero;
+  });
+  expect(drawnPixelCount).toBeGreaterThan(100);
 });
 
 test("touch visitors see a static hero grid", async ({ browser }) => {

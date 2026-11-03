@@ -1,14 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { getMotionMode, type MotionMode } from "../../lib/motion-preferences";
-import { CELL_SIZE, cellAt, decayHeat, heatKernel } from "../../lib/hero-grid";
-
-const LINE = "rgba(23, 23, 22, 0.07)";
-const MAX_SHADE = 0.14;
+import {
+  generateNodes,
+  updateNodes,
+  findConnections,
+  getLinkStyle,
+  DEFAULT_CONSTELLATION_CONFIG,
+  type NodePoint,
+} from "../../lib/hero-constellation";
 
 /**
- * Hero backdrop of 50px squares. With a fine pointer and full motion, the
- * square under the cursor darkens, its neighbours darken a little, and the
- * trail fades out. Other visitors get the static grid only.
+ * Hero backdrop rendering an interactive cybernetic constellation and data mesh.
+ * In full-motion mode, nodes dynamically react with smoothed magnetic cursor attraction,
+ * spring return physics, organic ambient breathing, and luminous vector connections.
+ * In reduced-motion or static/touch modes, renders a quiet static network topology.
  */
 export default function HeroGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -18,48 +23,98 @@ export default function HeroGrid() {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
-    const current = getMotionMode({
+
+    const currentMode = getMotionMode({
       reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       coarsePointer: window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0,
     });
-    setMode(current);
+    setMode(currentMode);
 
     let width = 0;
     let height = 0;
-    let cols = 0;
-    let rows = 0;
-    let heat = new Float32Array(0);
-    let hovered: { col: number; row: number } | null = null;
-    let frame: number | null = null;
+    let frameId: number | null = null;
+    let nodes: NodePoint[] = [];
 
-    const draw = () => {
+    const targetCursor = {
+      x: -9999,
+      y: -9999,
+      active: false,
+    };
+
+    const smoothCursor = {
+      x: -9999,
+      y: -9999,
+      active: false,
+    };
+
+    const drawMesh = () => {
       const dpr = window.devicePixelRatio || 1;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < heat.length; i += 1) {
-        if (heat[i] <= 0) continue;
-        const col = i % cols;
-        const row = Math.floor(i / cols);
-        ctx.fillStyle = `rgba(23, 23, 22, ${(heat[i] * MAX_SHADE).toFixed(3)})`;
-        ctx.fillRect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-      }
-      ctx.strokeStyle = LINE;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      for (let x = 0.5; x <= width; x += CELL_SIZE) (ctx.moveTo(x, 0), ctx.lineTo(x, height));
-      for (let y = 0.5; y <= height; y += CELL_SIZE) (ctx.moveTo(0, y), ctx.lineTo(width, y));
-      ctx.stroke();
-    };
 
-    const tick = () => {
-      const active = decayHeat(heat, 0.9);
-      if (hovered) {
-        for (const cell of heatKernel(hovered.col, hovered.row, cols, rows)) {
-          heat[cell.index] = Math.max(heat[cell.index], cell.value);
+      // 1. Draw connecting vector data links
+      const links = findConnections(nodes, DEFAULT_CONSTELLATION_CONFIG.connectDistance);
+      for (const link of links) {
+        const { strokeStyle, lineWidth } = getLinkStyle(
+          link.dist,
+          DEFAULT_CONSTELLATION_CONFIG.connectDistance,
+          link.energy,
+        );
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = lineWidth;
+        ctx.beginPath();
+        ctx.moveTo(link.from.x, link.from.y);
+        ctx.lineTo(link.to.x, link.to.y);
+        ctx.stroke();
+      }
+
+      // 2. Draw nodes
+      for (const node of nodes) {
+        const isExcited = node.energy > 0.2;
+        const fillAlpha = isExcited ? 0.85 : node.isAnchor ? 0.45 : 0.22;
+        const color = isExcited
+          ? `rgba(224, 90, 0, ${fillAlpha})`
+          : `rgba(23, 23, 22, ${fillAlpha})`;
+
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius + node.energy * 1.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Technical crosshair marks on anchor nodes
+        if (node.isAnchor) {
+          ctx.strokeStyle = isExcited ? `rgba(224, 90, 0, 0.45)` : `rgba(23, 23, 22, 0.16)`;
+          ctx.lineWidth = 1;
+          const arm = 4;
+          ctx.beginPath();
+          ctx.moveTo(node.x - arm, node.y);
+          ctx.lineTo(node.x + arm, node.y);
+          ctx.moveTo(node.x, node.y - arm);
+          ctx.lineTo(node.x, node.y + arm);
+          ctx.stroke();
         }
       }
-      draw();
-      frame = active || hovered ? requestAnimationFrame(tick) : null;
+    };
+
+    const tick = (now: number) => {
+      // Smoothly interpolate cursor position with calm, luxurious inertia
+      if (targetCursor.active) {
+        if (!smoothCursor.active) {
+          smoothCursor.x = targetCursor.x;
+          smoothCursor.y = targetCursor.y;
+          smoothCursor.active = true;
+        } else {
+          smoothCursor.x += (targetCursor.x - smoothCursor.x) * 0.04;
+          smoothCursor.y += (targetCursor.y - smoothCursor.y) * 0.04;
+        }
+      } else {
+        smoothCursor.active = false;
+      }
+
+      const activeCursor = smoothCursor.active ? { x: smoothCursor.x, y: smoothCursor.y } : null;
+      updateNodes(nodes, activeCursor, DEFAULT_CONSTELLATION_CONFIG, now);
+      drawMesh();
+      frameId = requestAnimationFrame(tick);
     };
 
     const resize = () => {
@@ -69,32 +124,51 @@ export default function HeroGrid() {
       height = rect.height;
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
-      cols = Math.ceil(width / CELL_SIZE);
-      rows = Math.ceil(height / CELL_SIZE);
-      heat = new Float32Array(cols * rows);
-      draw();
+
+      nodes = generateNodes(width, height, DEFAULT_CONSTELLATION_CONFIG);
+
+      if (currentMode !== "full") {
+        drawMesh();
+      }
     };
 
-    const onMove = (event: PointerEvent) => {
+    const onPointerMove = (event: PointerEvent) => {
       if (event.pointerType !== "mouse") return;
       const rect = canvas.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-      const inside = x >= 0 && y >= 0 && x < rect.width && y < rect.height;
-      hovered = inside ? cellAt(x, y) : null;
-      if (hovered) canvas.dataset.activeCell = `${hovered.col},${hovered.row}`;
-      else delete canvas.dataset.activeCell;
-      if (frame === null) frame = requestAnimationFrame(tick);
+
+      const inside = x >= 0 && y >= 0 && x <= rect.width && y <= rect.height;
+      if (inside) {
+        targetCursor.x = x;
+        targetCursor.y = y;
+        targetCursor.active = true;
+        canvas.dataset.activeCursor = `${Math.round(x)},${Math.round(y)}`;
+      } else {
+        targetCursor.active = false;
+        delete canvas.dataset.activeCursor;
+      }
     };
 
     const observer = new ResizeObserver(resize);
     observer.observe(canvas);
     resize();
-    if (current === "full") window.addEventListener("pointermove", onMove, { passive: true });
+
+    if (currentMode === "full") {
+      window.addEventListener("pointermove", onPointerMove, { passive: true });
+      frameId = requestAnimationFrame(tick);
+    } else {
+      drawMesh();
+    }
+
     return () => {
       observer.disconnect();
-      window.removeEventListener("pointermove", onMove);
-      if (frame !== null) cancelAnimationFrame(frame);
+      if (currentMode === "full") {
+        window.removeEventListener("pointermove", onPointerMove);
+      }
+      if (frameId !== null) {
+        cancelAnimationFrame(frameId);
+      }
     };
   }, []);
 

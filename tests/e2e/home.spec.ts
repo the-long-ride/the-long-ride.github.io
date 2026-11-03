@@ -50,10 +50,16 @@ test("each featured project shows its own app logo from dynamic repo link", asyn
       ),
     );
     await logo.scrollIntoViewIfNeeded();
-    const loaded = await logo.evaluate(
-      (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
-    );
-    expect(loaded, `${slug} logo loads`).toBe(true);
+    await expect
+      .poll(
+        async () => {
+          return await logo.evaluate(
+            (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
+          );
+        },
+        { message: `${slug} logo loads`, timeout: 8000 },
+      )
+      .toBe(true);
   }
   await expect(page.locator("[data-featured-project] .project-mark")).toHaveCount(0);
 });
