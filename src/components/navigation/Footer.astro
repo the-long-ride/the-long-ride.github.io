@@ -1,9 +1,11 @@
 ---
 import { siteConfig } from "../../config/site";
+import FooterMotion from "../motion/FooterMotion";
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
+  <FooterMotion client:load />
   <div class="container footer-grid">
     <div>
       <p class="eyebrow">Keep moving</p>
