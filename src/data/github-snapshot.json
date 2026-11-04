@@ -11,7 +11,7 @@
       "publishedAt": "2026-10-30T11:19:29Z"
     },
     "hasRelease": true,
-    "totalDownloads": 46,
+    "totalDownloads": 48,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/aevra/main/assets/aevra-logo.png",
     "updatedAt": "2026-11-01T13:08:17Z"
   },
@@ -21,15 +21,11 @@
     "url": "https://github.com/the-long-ride/aevra-browser-use",
     "stars": 0,
     "primaryLanguage": "TypeScript",
-    "latestRelease": {
-      "tag": "v1.0.0",
-      "url": "https://github.com/the-long-ride/aevra-browser-use/releases/tag/v1.0.0",
-      "publishedAt": "2026-10-19T00:00:00Z"
-    },
-    "hasRelease": true,
+    "latestRelease": null,
+    "hasRelease": false,
     "totalDownloads": 0,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/aevra-browser-use/main/shared/aevra/apps/extension/icons/icon-128.png",
-    "updatedAt": "2026-10-19T00:00:00Z"
+    "updatedAt": "2026-11-03T19:10:36Z"
   },
   "aevra-desktop-use": {
     "slug": "aevra-desktop-use",
@@ -40,18 +36,18 @@
     "latestRelease": {
       "tag": "v1.0.0",
       "url": "https://github.com/the-long-ride/aevra-desktop-use/releases/tag/v1.0.0",
-      "publishedAt": "2026-10-19T00:00:00Z"
+      "publishedAt": "2026-10-19T09:41:24Z"
     },
     "hasRelease": true,
     "totalDownloads": 0,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/aevra-desktop-use/main/packaging/icons/aevra-logo.png",
-    "updatedAt": "2026-10-19T00:00:00Z"
+    "updatedAt": "2026-11-04T03:50:23Z"
   },
   "engram": {
     "slug": "engram",
     "name": "engram",
     "url": "https://github.com/the-long-ride/engram",
-    "stars": 0,
+    "stars": 6,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
       "tag": "v0.0.29",
@@ -87,7 +83,7 @@
       "publishedAt": "2026-10-16T09:49:57Z"
     },
     "hasRelease": true,
-    "totalDownloads": 252,
+    "totalDownloads": 254,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-explorer/main/ui/assets/logos/logo.png",
     "updatedAt": "2026-11-01T09:41:29Z"
   },
