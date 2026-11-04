@@ -8,7 +8,7 @@ export default defineConfig({
   site: "https://the-long-ride.github.io",
   output: "static",
   trailingSlash: "always",
-  integrations: [mdx(), react(), sitemap()],
+  integrations: [react(), mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
     resolve: {

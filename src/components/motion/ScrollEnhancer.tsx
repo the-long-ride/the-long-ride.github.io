@@ -111,5 +111,5 @@ export default function ScrollEnhancer() {
     };
   }, []);
 
-  return null;
+  return <span className="scroll-enhancer" style={{ display: "none" }} aria-hidden="true" />;
 }
