@@ -75,7 +75,7 @@
     "slug": "markdown-explorer",
     "name": "markdown-explorer",
     "url": "https://github.com/the-long-ride/markdown-explorer",
-    "stars": 14,
+    "stars": 15,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
       "tag": "v1.7.1",
@@ -83,9 +83,9 @@
       "publishedAt": "2026-10-16T09:49:57Z"
     },
     "hasRelease": true,
-    "totalDownloads": 254,
+    "totalDownloads": 259,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-explorer/main/ui/assets/logos/logo.png",
-    "updatedAt": "2026-11-01T09:41:29Z"
+    "updatedAt": "2026-11-05T08:21:02Z"
   },
   "markdown-them": {
     "slug": "markdown-them",
