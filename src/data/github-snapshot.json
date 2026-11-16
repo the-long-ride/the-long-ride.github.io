@@ -114,14 +114,14 @@
     "stars": 3,
     "primaryLanguage": "Rust",
     "latestRelease": {
-      "tag": "v1.2.1",
-      "url": "https://github.com/the-long-ride/QuotaShift/releases/tag/v1.2.1",
-      "publishedAt": "2026-10-28T12:04:41Z"
+      "tag": "v1.3.0",
+      "url": "https://github.com/the-long-ride/QuotaShift/releases/tag/v1.3.0",
+      "publishedAt": "2026-11-16T09:41:06Z"
     },
     "hasRelease": true,
-    "totalDownloads": 102,
+    "totalDownloads": 228,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/QuotaShift/main/assets/icons/quota-shift-logo.png",
-    "updatedAt": "2026-11-06T09:36:26Z"
+    "updatedAt": "2026-11-16T11:28:23Z"
   },
   "voxveil": {
     "slug": "voxveil",
