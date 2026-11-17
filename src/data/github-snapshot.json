@@ -79,7 +79,7 @@
     "slug": "markdown-explorer",
     "name": "markdown-explorer",
     "url": "https://github.com/the-long-ride/markdown-explorer",
-    "stars": 15,
+    "stars": 16,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
       "tag": "v1.7.1",
@@ -87,9 +87,9 @@
       "publishedAt": "2026-10-16T09:49:57Z"
     },
     "hasRelease": true,
-    "totalDownloads": 273,
+    "totalDownloads": 275,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-explorer/main/ui/assets/logos/logo.png",
-    "updatedAt": "2026-11-05T08:21:02Z"
+    "updatedAt": "2026-11-17T10:30:04Z"
   },
   "markdown-them": {
     "slug": "markdown-them",
@@ -98,12 +98,12 @@
     "stars": 4,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.4.0",
-      "url": "https://github.com/the-long-ride/markdown-them/releases/tag/v1.4.0",
-      "publishedAt": "2026-11-02T11:35:20Z"
+      "tag": "v1.4.1",
+      "url": "https://github.com/the-long-ride/markdown-them/releases/tag/v1.4.1",
+      "publishedAt": "2026-11-17T04:29:35Z"
     },
     "hasRelease": true,
-    "totalDownloads": 92,
+    "totalDownloads": 101,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-them/main/assets/markdown-them-logo.png",
     "updatedAt": "2026-11-03T05:33:29Z"
   },
@@ -119,7 +119,7 @@
       "publishedAt": "2026-11-16T09:41:06Z"
     },
     "hasRelease": true,
-    "totalDownloads": 228,
+    "totalDownloads": 231,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/QuotaShift/main/assets/icons/quota-shift-logo.png",
     "updatedAt": "2026-11-16T11:28:23Z"
   },
