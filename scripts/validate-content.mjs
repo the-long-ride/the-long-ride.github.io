@@ -11,6 +11,7 @@ const approvedFeatured = [
   "markdown-explorer",
   "quotashift",
   "markdown-them",
+  "opendrive",
 ];
 
 function field(frontmatter, key) {

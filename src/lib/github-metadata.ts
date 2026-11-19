@@ -42,6 +42,7 @@ export const portfolioRepositories = {
   "markdown-explorer": "markdown-explorer",
   quotashift: "QuotaShift",
   "markdown-them": "markdown-them",
+  opendrive: "opendrive",
   voxveil: "Voxveil",
   "know-your-project": "know-your-project",
 } as const;
@@ -61,6 +62,7 @@ export const repositoryLogos: Record<string, string> = {
   "markdown-them":
     "https://raw.githubusercontent.com/the-long-ride/markdown-them/main/assets/markdown-them-logo.png",
   voxveil: "https://raw.githubusercontent.com/the-long-ride/Voxveil/master/assets/voxveil-logo.png",
+  opendrive: "/projects/opendrive/logo.svg",
 };
 
 export type PortfolioRepositorySlug = keyof typeof portfolioRepositories;

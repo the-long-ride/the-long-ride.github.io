@@ -8,6 +8,7 @@ const featuredSlugs = [
   "markdown-explorer",
   "quotashift",
   "markdown-them",
+  "opendrive",
 ];
 
 test("homepage tells the portfolio story without fabricated sections", async ({ page }) => {
@@ -23,7 +24,7 @@ test("homepage tells the portfolio story without fabricated sections", async ({ 
   );
 
   const featured = page.locator("[data-featured-project]");
-  await expect(featured).toHaveCount(7);
+  await expect(featured).toHaveCount(8);
   await expect(featured).toContainText([
     "Engram",
     "Aevra",
@@ -32,6 +33,7 @@ test("homepage tells the portfolio story without fabricated sections", async ({ 
     "Markdown Explorer",
     "QuotaShift",
     "Markdown Them",
+    "OpenDrive",
   ]);
   await expect(page.getByRole("heading", { name: /^(Now|Currently Building)$/i })).toHaveCount(0);
   await expect(page.locator("[data-selected-experience]")).toHaveCount(0);

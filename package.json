@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=24.0.0"
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4321",
@@ -30,7 +30,7 @@
     "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.7.4",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.3.5",
+    "astro": "7.4.12",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "tailwindcss": "4.3.3"

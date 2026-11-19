@@ -10,6 +10,7 @@ const repos = {
   "markdown-explorer": "markdown-explorer",
   quotashift: "QuotaShift",
   "markdown-them": "markdown-them",
+  opendrive: "opendrive",
   voxveil: "Voxveil",
   "know-your-project": "know-your-project",
 };
@@ -29,6 +30,7 @@ const repositoryLogos = {
   "markdown-them":
     "https://raw.githubusercontent.com/the-long-ride/markdown-them/main/assets/markdown-them-logo.png",
   voxveil: "https://raw.githubusercontent.com/the-long-ride/Voxveil/master/assets/voxveil-logo.png",
+  opendrive: "/projects/opendrive/logo.svg",
 };
 
 const prior = JSON.parse(await readFile(snapshotPath, "utf8"));

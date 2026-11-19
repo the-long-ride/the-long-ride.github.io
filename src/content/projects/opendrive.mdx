@@ -1,0 +1,43 @@
+---
+title: "OpenDrive"
+slug: "opendrive"
+problem: "Google Drive lacks an official Linux desktop client, while using multiple accounts often requires switching identities or relying on separate mounting tools."
+value: "A free, open-source multi-account desktop client with native filesystem integration, on-demand file hydration, and credentials controlled by the user."
+summary: "A cross-platform Rust desktop client for multiple Google Drive accounts, with native filesystem mounting, lazy file hydration, and local credential storage."
+status: "released"
+releaseState: "released"
+category: "local-first"
+role: "Creator"
+stack: ["Rust", "egui", "SQLite", "FUSE3", "Windows CFAPI", "NFSv3"]
+repo: "https://github.com/the-long-ride/opendrive"
+featured: true
+featuredOrder: 8
+logo: "/projects/opendrive/logo.svg"
+deepDive: false
+---
+
+## One client for multiple Drive accounts
+
+OpenDrive is a free, open-source desktop application for accessing multiple Google Drive accounts on Windows, macOS, and Linux. The aim is to make remote files accessible as native filesystem entries without relying on a proprietary cloud synchronization middleman or passing Google OAuth tokens through third-party servers.
+
+The client uses Rust with an `egui` desktop interface. Authentication, Google Drive API access, local metadata, and synchronization live in separate crates rather than being coupled to the UI.
+
+## Filesystem integration on each platform
+
+OpenDrive uses each operating system's available filesystem interfaces:
+
+- **Windows:** the built-in Cloud Files API (CFAPI), plus an optional virtual drive letter.
+- **macOS:** a localhost NFSv3 mount without requiring macFUSE.
+- **Linux:** standard userspace FUSE3.
+
+On-demand file hydration avoids downloading entire Drive libraries before browsing. A local SQLite index and upload queue support synchronization and write-back.
+
+## Credentials stay in the user's control
+
+Accounts connect through user-provided Google Cloud OAuth desktop credentials or service account credentials. Native OS credential storage protects secrets, and encrypted credential backup is available for portability.
+
+### Architecture choices
+
+Filesystem callbacks vary substantially between Windows, macOS, and Linux. OpenDrive isolates their native adapters behind a shared virtual-filesystem engine, preserving a consistent synchronization model without pretending that each operating system has identical semantics.
+
+[Source code, setup guide, and downloads](https://github.com/the-long-ride/opendrive)

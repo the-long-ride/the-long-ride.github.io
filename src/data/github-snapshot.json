@@ -107,6 +107,22 @@
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-them/main/assets/markdown-them-logo.png",
     "updatedAt": "2026-11-03T05:33:29Z"
   },
+  "opendrive": {
+    "slug": "opendrive",
+    "name": "opendrive",
+    "url": "https://github.com/the-long-ride/opendrive",
+    "stars": 1,
+    "primaryLanguage": "Rust",
+    "latestRelease": {
+      "tag": "v0.1.0",
+      "url": "https://github.com/the-long-ride/opendrive/releases/tag/v0.1.0",
+      "publishedAt": "2026-11-19T10:26:23Z"
+    },
+    "hasRelease": true,
+    "totalDownloads": 0,
+    "logoUrl": "/projects/opendrive/logo.svg",
+    "updatedAt": "2026-11-19T08:52:34Z"
+  },
   "quotashift": {
     "slug": "quotashift",
     "name": "QuotaShift",

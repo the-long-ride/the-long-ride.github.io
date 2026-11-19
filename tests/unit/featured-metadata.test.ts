@@ -4,7 +4,7 @@ import { approvedFeaturedSlugs } from "../../src/lib/content";
 import { portfolioRepositories } from "../../src/lib/github-metadata";
 
 describe("featured project metadata", () => {
-  it("lists Markdown Them last in the approved featured order", () => {
+  it("lists OpenDrive last in the approved featured order", () => {
     expect(approvedFeaturedSlugs).toEqual([
       "engram",
       "aevra",
@@ -13,6 +13,7 @@ describe("featured project metadata", () => {
       "markdown-explorer",
       "quotashift",
       "markdown-them",
+      "opendrive",
     ]);
   });
 
