@@ -27,6 +27,7 @@ export const approvedFeaturedSlugs = [
   "markdown-explorer",
   "quotashift",
   "markdown-them",
+  "opendrive",
 ] as const;
 export function assertPortfolioEntry(
   entry: PortfolioEntryLike,

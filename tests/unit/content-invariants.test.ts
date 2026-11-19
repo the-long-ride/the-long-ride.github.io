@@ -36,6 +36,7 @@ describe("portfolio content invariants", () => {
       entry("markdown-explorer", { featuredOrder: 5 }),
       entry("quotashift", { featuredOrder: 6 }),
       entry("markdown-them", { featuredOrder: 7 }),
+      entry("opendrive", { featuredOrder: 8 }),
     ];
     expect(getFeaturedProjects(entries as never).map((item) => item.data.slug)).toEqual([
       "engram",
@@ -45,6 +46,7 @@ describe("portfolio content invariants", () => {
       "markdown-explorer",
       "quotashift",
       "markdown-them",
+      "opendrive",
     ]);
   });
 
