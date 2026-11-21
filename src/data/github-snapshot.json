@@ -43,7 +43,7 @@
       "publishedAt": "2026-10-19T09:41:24Z"
     },
     "hasRelease": true,
-    "totalDownloads": 0,
+    "totalDownloads": 2,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/aevra-desktop-use/main/packaging/icons/aevra-logo.png",
     "updatedAt": "2026-11-04T03:50:23Z"
   },
@@ -59,7 +59,7 @@
       "publishedAt": "2026-10-14T23:15:35Z"
     },
     "hasRelease": true,
-    "totalDownloads": 2,
+    "totalDownloads": 3,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/engram/main/media/logo/engram-logo-black-transparent.svg",
     "updatedAt": "2026-10-13T03:39:24Z"
   },
@@ -87,7 +87,7 @@
       "publishedAt": "2026-10-16T09:49:57Z"
     },
     "hasRelease": true,
-    "totalDownloads": 291,
+    "totalDownloads": 292,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-explorer/main/ui/assets/logos/logo.png",
     "updatedAt": "2026-11-17T10:30:04Z"
   },
