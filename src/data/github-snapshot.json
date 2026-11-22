@@ -43,7 +43,7 @@
       "publishedAt": "2026-10-19T09:41:24Z"
     },
     "hasRelease": true,
-    "totalDownloads": 2,
+    "totalDownloads": 3,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/aevra-desktop-use/main/packaging/icons/aevra-logo.png",
     "updatedAt": "2026-11-04T03:50:23Z"
   },
@@ -82,12 +82,12 @@
     "stars": 16,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.7.1",
-      "url": "https://github.com/the-long-ride/markdown-explorer/releases/tag/v1.7.1",
-      "publishedAt": "2026-10-16T09:49:57Z"
+      "tag": "v1.7.2",
+      "url": "https://github.com/the-long-ride/markdown-explorer/releases/tag/v1.7.2",
+      "publishedAt": "2026-11-22T05:50:28Z"
     },
     "hasRelease": true,
-    "totalDownloads": 292,
+    "totalDownloads": 514,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-explorer/main/ui/assets/logos/logo.png",
     "updatedAt": "2026-11-17T10:30:04Z"
   },
@@ -103,7 +103,7 @@
       "publishedAt": "2026-11-17T04:29:35Z"
     },
     "hasRelease": true,
-    "totalDownloads": 103,
+    "totalDownloads": 104,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-them/main/assets/markdown-them-logo.png",
     "updatedAt": "2026-11-03T05:33:29Z"
   },
@@ -111,7 +111,7 @@
     "slug": "opendrive",
     "name": "opendrive",
     "url": "https://github.com/the-long-ride/opendrive",
-    "stars": 1,
+    "stars": 2,
     "primaryLanguage": "Rust",
     "latestRelease": {
       "tag": "v0.1.0",
@@ -121,7 +121,7 @@
     "hasRelease": true,
     "totalDownloads": 8,
     "logoUrl": "/projects/opendrive/logo.svg",
-    "updatedAt": "2026-11-19T08:52:34Z"
+    "updatedAt": "2026-11-22T05:17:05Z"
   },
   "quotashift": {
     "slug": "quotashift",
@@ -130,12 +130,12 @@
     "stars": 3,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.3.1",
-      "url": "https://github.com/the-long-ride/QuotaShift/releases/tag/v1.3.1",
-      "publishedAt": "2026-11-18T12:29:49Z"
+      "tag": "v1.3.2",
+      "url": "https://github.com/the-long-ride/QuotaShift/releases/tag/v1.3.2",
+      "publishedAt": "2026-11-21T19:23:20Z"
     },
     "hasRelease": true,
-    "totalDownloads": 240,
+    "totalDownloads": 248,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/QuotaShift/main/assets/icons/quota-shift-logo.png",
     "updatedAt": "2026-11-18T13:14:57Z"
   },
