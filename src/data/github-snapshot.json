@@ -87,7 +87,7 @@
       "publishedAt": "2026-11-22T05:50:28Z"
     },
     "hasRelease": true,
-    "totalDownloads": 683,
+    "totalDownloads": 685,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-explorer/main/ui/assets/logos/logo.png",
     "updatedAt": "2026-11-17T10:30:04Z"
   },
@@ -98,12 +98,12 @@
     "stars": 4,
     "primaryLanguage": "TypeScript",
     "latestRelease": {
-      "tag": "v1.4.1",
-      "url": "https://github.com/the-long-ride/markdown-them/releases/tag/v1.4.1",
-      "publishedAt": "2026-11-17T04:29:35Z"
+      "tag": "v1.4.2",
+      "url": "https://github.com/the-long-ride/markdown-them/releases/tag/v1.4.2",
+      "publishedAt": "2026-11-23T17:11:53Z"
     },
     "hasRelease": true,
-    "totalDownloads": 106,
+    "totalDownloads": 108,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/markdown-them/main/assets/markdown-them-logo.png",
     "updatedAt": "2026-11-03T05:33:29Z"
   },
@@ -119,7 +119,7 @@
       "publishedAt": "2026-11-19T10:26:23Z"
     },
     "hasRelease": true,
-    "totalDownloads": 11,
+    "totalDownloads": 12,
     "logoUrl": "/projects/opendrive/logo.svg",
     "updatedAt": "2026-11-22T05:17:05Z"
   },
@@ -135,7 +135,7 @@
       "publishedAt": "2026-11-21T19:23:20Z"
     },
     "hasRelease": true,
-    "totalDownloads": 250,
+    "totalDownloads": 252,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/QuotaShift/main/assets/icons/quota-shift-logo.png",
     "updatedAt": "2026-11-18T13:14:57Z"
   },
@@ -144,11 +144,11 @@
     "name": "Voxveil",
     "url": "https://github.com/the-long-ride/Voxveil",
     "stars": 0,
-    "primaryLanguage": "JavaScript",
+    "primaryLanguage": "Rust",
     "latestRelease": null,
     "hasRelease": false,
     "totalDownloads": 0,
     "logoUrl": "https://raw.githubusercontent.com/the-long-ride/Voxveil/master/assets/voxveil-logo.png",
-    "updatedAt": "2026-09-25T04:08:24Z"
+    "updatedAt": "2026-11-24T07:55:44Z"
   }
 }
